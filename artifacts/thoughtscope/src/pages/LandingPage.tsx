@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import { useTheme } from "next-themes";
 import {
   Search, Sun, Moon, Menu, X, ChevronDown, ChevronUp,
-  Brain, Bot, FileText, Globe, CreditCard, Lock,
+  Brain, Bot, FileText, Globe, Lock,
   ArrowRight, Check, Star, Mail, Loader2, AlertCircle, CheckCircle2
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -54,7 +54,6 @@ const features = [
   { icon: Bot, title: "Boss Agent", desc: "Auto-detects your category and instantly recommends the best specialized agent — no manual selection, just the right tool every time." },
   { icon: FileText, title: "10 Specialized Agents", desc: "Content, Code, Prompt, Hook, Language Bridge and 5 more — purpose-built agents designed for every task you face." },
   { icon: Globe, title: "Multi-Language", desc: "Full support for English, Urdu, Hindi, Arabic and 20+ additional languages with native-quality analysis and output." },
-  { icon: CreditCard, title: "Smart Credits", desc: "5 free monthly credits, Pro 100 credits, Business unlimited — flexible pricing that scales precisely with your needs." },
   { icon: Lock, title: "Privacy First", desc: "Your data is never stored, never logged, never sold. Complete end-to-end privacy by design — not as an afterthought." },
 ];
 
@@ -216,7 +215,6 @@ export default function LandingPage() {
   const heroIn = useInView(0.1);
   const featuresIn = useInView(0.1);
   const stepsIn = useInView(0.1);
-  const pricingIn = useInView(0.1);
   const reviewsIn = useInView(0.1);
   const faqIn = useInView(0.1);
   const ctaIn = useInView(0.1);
@@ -225,7 +223,6 @@ export default function LandingPage() {
   const navLinks = [
     { label: "Home", href: "#home" },
     { label: "Features", href: "#features" },
-    { label: "Pricing", href: "#pricing" },
     { label: "About", href: "#faq" },
   ];
 
@@ -455,82 +452,6 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* ── PRICING ── */}
-        <section id="pricing" ref={pricingIn.ref} className="py-24 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-5xl mx-auto">
-            <div className={`text-center mb-16 transition-all duration-700 ${pricingIn.inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-              <h2 className="text-3xl sm:text-4xl font-bold mb-4">Simple, transparent pricing</h2>
-              <p className="text-muted-foreground text-lg">Start free. Scale when you're ready.</p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
-              {/* Free */}
-              <div data-testid="card-pricing-free" className={`bg-card border border-card-border rounded-xl p-8 flex flex-col transition-all duration-500 ${pricingIn.inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`} style={{ transitionDelay: "0ms" }}>
-                <div className="mb-6">
-                  <h3 className="font-bold text-xl mb-1">Free</h3>
-                  <p className="text-muted-foreground text-sm mb-4">Perfect to get started</p>
-                  <div className="flex items-end gap-1">
-                    <span className="text-4xl font-black">$0</span>
-                    <span className="text-muted-foreground mb-1">/month</span>
-                  </div>
-                </div>
-                <ul className="space-y-3 flex-1 mb-8">
-                  {["5 credits/month", "2 specialized agents", "Basic AI analysis", "Email support"].map((item) => (
-                    <li key={item} className="flex items-center gap-2.5 text-sm">
-                      <Check className="w-4 h-4 text-primary shrink-0" />
-                      <span className="text-muted-foreground">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Button variant="outline" className="w-full rounded-xl" data-testid="button-free-plan">Get Started Free</Button>
-              </div>
-
-              {/* Pro */}
-              <div data-testid="card-pricing-pro" className={`relative bg-card border-2 border-primary rounded-xl p-8 flex flex-col shadow-xl shadow-primary/10 transition-all duration-500 ${pricingIn.inView ? "opacity-100 translate-y-0 scale-105" : "opacity-0 translate-y-8"}`} style={{ transitionDelay: "100ms" }}>
-                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
-                  <span className="px-4 py-1 rounded-full text-xs font-bold text-white gradient-bg shadow-sm">Most Popular</span>
-                </div>
-                <div className="mb-6 mt-2">
-                  <h3 className="font-bold text-xl mb-1">Pro</h3>
-                  <p className="text-muted-foreground text-sm mb-4">For serious users</p>
-                  <div className="flex items-end gap-1">
-                    <span className="text-4xl font-black">$9.99</span>
-                    <span className="text-muted-foreground mb-1">/month</span>
-                  </div>
-                </div>
-                <ul className="space-y-3 flex-1 mb-8">
-                  {["100 credits/month", "All 10 specialized agents", "Deep AI analysis", "Priority support", "PDF & JSON export"].map((item) => (
-                    <li key={item} className="flex items-center gap-2.5 text-sm">
-                      <Check className="w-4 h-4 text-primary shrink-0" />
-                      <span className="text-foreground">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Button className="w-full rounded-xl gradient-bg border-0 text-white hover:opacity-90" data-testid="button-pro-plan">Get Started</Button>
-              </div>
-
-              {/* Business */}
-              <div data-testid="card-pricing-business" className={`bg-card border border-card-border rounded-xl p-8 flex flex-col transition-all duration-500 ${pricingIn.inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`} style={{ transitionDelay: "200ms" }}>
-                <div className="mb-6">
-                  <h3 className="font-bold text-xl mb-1">Business</h3>
-                  <p className="text-muted-foreground text-sm mb-4">For teams and enterprises</p>
-                  <div className="flex items-end gap-1">
-                    <span className="text-4xl font-black">$29.99</span>
-                    <span className="text-muted-foreground mb-1">/month</span>
-                  </div>
-                </div>
-                <ul className="space-y-3 flex-1 mb-8">
-                  {["Unlimited credits", "All Pro features", "API access", "Team collaboration", "Custom integrations", "SSO support"].map((item) => (
-                    <li key={item} className="flex items-center gap-2.5 text-sm">
-                      <Check className="w-4 h-4 text-primary shrink-0" />
-                      <span className="text-muted-foreground">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Button variant="outline" className="w-full rounded-xl" data-testid="button-business-plan">Contact Sales</Button>
-              </div>
-            </div>
-          </div>
-        </section>
 
         {/* ── CTA SECTION ── */}
         <section ref={ctaIn.ref} className="py-24 px-4 sm:px-6 lg:px-8 bg-card/50">

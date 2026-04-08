@@ -159,8 +159,6 @@
     .lang-opt { display:block;width:100%;padding:.45rem .75rem;background:transparent;border:none;border-radius:.5rem;color:var(--text);font-size:.85rem;text-align:left;cursor:pointer;transition:background .15s;white-space:nowrap; }
     .lang-opt:hover { background:rgba(128,128,128,.1); }
 
-    /* ── Pricing popular border ────────────────────────── */
-    .pop { border-color:#10A37F !important;box-shadow:0 0 36px rgba(16,163,127,.12); }
 
     /* ── Agent grid ─────────────────────────────────────── */
     .agent-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(170px,1fr)); gap:.875rem; }
@@ -1026,60 +1024,6 @@
   </div>
 </section>
 
-<!-- ── PRICING ────────────────────────────────────────────── -->
-<section id="pricing" style="padding:5.5rem 1.5rem;background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
-  <div style="max-width:1040px;margin:0 auto;">
-    <div style="text-align:center;margin-bottom:3.5rem;" class="fu">
-      <div class="slabel" style="margin-bottom:.75rem;">Pricing</div>
-      <h2 style="font-size:clamp(1.6rem,4vw,2.4rem);font-weight:800;color:var(--text);margin-bottom:.75rem;">Simple, transparent pricing</h2>
-      <p style="font-size:1rem;color:var(--text2);">Start free. Scale when you're ready.</p>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.125rem;align-items:start;">
-      <!-- Free -->
-      <div class="card fu d1" style="padding:1.75rem;display:flex;flex-direction:column;">
-        <h3 style="font-weight:800;color:var(--text);margin-bottom:.2rem;">Free</h3>
-        <p style="font-size:.85rem;color:var(--text2);margin-bottom:.875rem;">Perfect to get started</p>
-        <div style="margin-bottom:1.375rem;"><span style="font-size:2.4rem;font-weight:900;color:var(--text);">$0</span><span style="color:var(--text2);">/mo</span></div>
-        <ul style="list-style:none;padding:0;margin:0 0 1.75rem;display:flex;flex-direction:column;gap:.625rem;flex:1;">
-          <li style="display:flex;align-items:center;gap:.5rem;font-size:.875rem;color:var(--text2);">✅ Unlimited questions</li>
-          <li style="display:flex;align-items:center;gap:.5rem;font-size:.875rem;color:var(--text2);">✅ 2 specialized agents</li>
-          <li style="display:flex;align-items:center;gap:.5rem;font-size:.875rem;color:var(--text2);">✅ Basic AI analysis</li>
-          <li style="display:flex;align-items:center;gap:.5rem;font-size:.875rem;color:var(--text2);">✅ Email support</li>
-        </ul>
-        <button onclick="openModal('signup')" class="btn-o" style="border-radius:.875rem;padding:.7rem;">Get Started Free</button>
-      </div>
-      <!-- Pro -->
-      <div class="card pop fu d2" style="padding:1.75rem;display:flex;flex-direction:column;position:relative;">
-        <div style="position:absolute;top:-13px;left:50%;transform:translateX(-50%);"><span class="g-bg" style="display:inline-block;padding:.25rem .875rem;border-radius:9999px;font-size:.72rem;font-weight:700;color:white;">Most Popular</span></div>
-        <h3 style="font-weight:800;color:var(--text);margin-bottom:.2rem;margin-top:.375rem;">Pro</h3>
-        <p style="font-size:.85rem;color:var(--text2);margin-bottom:.875rem;">For serious researchers</p>
-        <div style="margin-bottom:1.375rem;"><span style="font-size:2.4rem;font-weight:900;color:var(--text);">$9.99</span><span style="color:var(--text2);">/mo</span></div>
-        <ul style="list-style:none;padding:0;margin:0 0 1.75rem;display:flex;flex-direction:column;gap:.625rem;flex:1;">
-          <li style="display:flex;align-items:center;gap:.5rem;font-size:.875rem;color:var(--text);">✅ Unlimited questions</li>
-          <li style="display:flex;align-items:center;gap:.5rem;font-size:.875rem;color:var(--text);">✅ All 10 agents</li>
-          <li style="display:flex;align-items:center;gap:.5rem;font-size:.875rem;color:var(--text);">✅ Deep AI analysis</li>
-          <li style="display:flex;align-items:center;gap:.5rem;font-size:.875rem;color:var(--text);">✅ Priority support</li>
-          <li style="display:flex;align-items:center;gap:.5rem;font-size:.875rem;color:var(--text);">✅ PDF & JSON export</li>
-        </ul>
-        <button onclick="startCheckout('pro')" class="btn-p" style="border-radius:.875rem;padding:.7rem;" id="proBtn">Upgrade to Pro →</button>
-      </div>
-      <!-- Business -->
-      <div class="card fu d3" style="padding:1.75rem;display:flex;flex-direction:column;">
-        <h3 style="font-weight:800;color:var(--text);margin-bottom:.2rem;">Business</h3>
-        <p style="font-size:.85rem;color:var(--text2);margin-bottom:.875rem;">For teams and enterprises</p>
-        <div style="margin-bottom:1.375rem;"><span style="font-size:2.4rem;font-weight:900;color:var(--text);">$29.99</span><span style="color:var(--text2);">/mo</span></div>
-        <ul style="list-style:none;padding:0;margin:0 0 1.75rem;display:flex;flex-direction:column;gap:.625rem;flex:1;">
-          <li style="display:flex;align-items:center;gap:.5rem;font-size:.875rem;color:var(--text2);">✅ Unlimited questions</li>
-          <li style="display:flex;align-items:center;gap:.5rem;font-size:.875rem;color:var(--text2);">✅ All Pro features</li>
-          <li style="display:flex;align-items:center;gap:.5rem;font-size:.875rem;color:var(--text2);">✅ API access</li>
-          <li style="display:flex;align-items:center;gap:.5rem;font-size:.875rem;color:var(--text2);">✅ Team collaboration</li>
-          <li style="display:flex;align-items:center;gap:.5rem;font-size:.875rem;color:var(--text2);">✅ SSO support</li>
-        </ul>
-        <button onclick="startCheckout('business')" class="btn-o" style="border-radius:.875rem;padding:.7rem;" id="bizBtn">Upgrade to Business →</button>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ── CTA ────────────────────────────────────────────────── -->
 <section style="padding:5.5rem 1.5rem;">
@@ -1146,7 +1090,6 @@
         <h4 style="font-weight:700;font-size:.75rem;color:var(--text2);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.875rem;">Product</h4>
         <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.5rem;">
           <li><a href="#features" style="font-size:.875rem;color:var(--text2);text-decoration:none;">Features</a></li>
-          <li><a href="#pricing"  style="font-size:.875rem;color:var(--text2);text-decoration:none;">Pricing</a></li>
           <li><a href="#"         style="font-size:.875rem;color:var(--text2);text-decoration:none;">Agents</a></li>
           <li><a href="#"         style="font-size:.875rem;color:var(--text2);text-decoration:none;">API</a></li>
         </ul>
@@ -1337,76 +1280,6 @@ async function shareResult() {
   }
 }
 
-// ══════════════════════════════════════════════════════════════
-// LEMONSQUEEZY PAYMENTS
-// ══════════════════════════════════════════════════════════════
-
-// Initiate checkout — opens LS checkout page in same tab
-async function startCheckout(plan) {
-  if (!currentUser) {
-    // Must be signed in to purchase
-    openModal('signin');
-    return;
-  }
-
-  // Find and disable the button temporarily
-  const btnId = plan === 'pro' ? 'proBtn' : 'bizBtn';
-  const btn = document.getElementById(btnId);
-  const origText = btn ? btn.textContent : '';
-  if (btn) { btn.disabled = true; btn.textContent = 'Loading…'; }
-
-  try {
-    const res = await fetch('/api-server/api/create-checkout', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        plan,
-        email:  currentUser.email  || '',
-        userId: currentUser.id     || '',
-      }),
-    });
-
-    if (!res.ok) {
-      const err = await res.json().catch(() => ({}));
-      throw new Error(err.error || 'Checkout creation failed');
-    }
-
-    const { url } = await res.json();
-    if (url) window.open(url, '_blank');
-    else throw new Error('No checkout URL returned');
-
-  } catch (err) {
-    alert('⚠️ Could not open checkout: ' + err.message);
-  }
-
-  if (btn) { btn.disabled = false; btn.textContent = origText; }
-}
-
-// Handle ?checkout=success redirect from LemonSqueezy
-(function handleCheckoutReturn() {
-  const params = new URLSearchParams(window.location.search);
-  if (params.get('checkout') === 'success') {
-    // Clean URL
-    const clean = window.location.pathname;
-    window.history.replaceState({}, '', clean);
-
-    // Show a toast/banner after slight delay (auth may not be ready yet)
-    setTimeout(() => {
-      const banner = document.createElement('div');
-      banner.innerHTML = `
-        <div style="position:fixed;top:80px;right:1.5rem;z-index:1000;background:var(--card);border:1px solid rgba(16,163,127,.4);border-radius:1rem;padding:1rem 1.375rem;box-shadow:0 8px 32px rgba(0,0,0,.3);max-width:320px;animation:fadeIn .3s ease;">
-          <div style="display:flex;align-items:center;gap:.625rem;margin-bottom:.375rem;">
-            <span style="font-size:1.25rem;">🎉</span>
-            <strong style="color:var(--text);font-size:.9rem;">Payment successful!</strong>
-          </div>
-          <p style="font-size:.82rem;color:var(--text2);line-height:1.55;">Welcome to your new plan. All features are now unlocked — enjoy Menticx!</p>
-          <button onclick="this.parentElement.parentElement.remove()" style="margin-top:.625rem;font-size:.75rem;color:var(--btn);background:transparent;border:none;cursor:pointer;font-weight:600;">Dismiss ✕</button>
-        </div>`;
-      document.body.appendChild(banner);
-      setTimeout(() => banner.remove(), 8000);
-    }, 1200);
-  }
-})();
 
 // ── Dashboard nav: open sign in if not logged in ─────────────
 function navDashClick() {
