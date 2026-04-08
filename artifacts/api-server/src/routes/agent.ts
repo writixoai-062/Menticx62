@@ -4,125 +4,95 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 const router: IRouter = Router();
 
 function buildPrompt(agentId: string, inputs: Record<string, string>, lang: string): string {
-  const lNote =
-    lang && lang !== "English"
-      ? `\n\nIMPORTANT: Your entire response must be in ${lang}. Every heading, sentence, and example must be written in ${lang}.`
-      : "";
+  const lNote = lang && lang !== "English"
+    ? `\n\nIMPORTANT: Your entire response must be in ${lang}.`
+    : "";
 
   switch (agentId) {
-    case "content":
+
+    case "whatsapp":
       return (
-        `You are a world-class content writer. Create compelling ${inputs.platform || "Blog"} content about "${inputs.topic}".\n` +
-        `Tone: ${inputs.tone || "Professional"}. Target length: ${inputs.length || "Medium"}.\n\n` +
-        `Structure your output exactly as:\n` +
-        `**Title:** [attention-grabbing title]\n\n` +
-        `**Introduction:** [hook the reader in 2–3 sentences]\n\n` +
-        `**Main Content:** [well-structured body with subheadings]\n\n` +
-        `**Conclusion:** [strong closing with call-to-action]` +
-        lNote
+        `You are a friendly small business WhatsApp assistant. Write a fast, professional WhatsApp reply.\n\n` +
+        `Product: ${inputs.product}\n` +
+        `Price: ${inputs.price}\n` +
+        `Stock available: ${inputs.stock}\n` +
+        `Delivery area: ${inputs.area}\n` +
+        `Estimated delivery days: ${inputs.days}\n\n` +
+        `Write a warm, friendly WhatsApp reply that:\n` +
+        `- Answers clearly and quickly\n` +
+        `- Sounds like a real helpful shop owner, not a robot\n` +
+        `- Includes price, stock status, and delivery info naturally\n` +
+        `- Ends with an invitation to order or ask more\n` +
+        `- Uses 1-2 appropriate emojis\n` +
+        `Keep it short — max 5-6 lines.` + lNote
       );
 
-    case "code":
+    case "complaint":
       return (
-        `You are a senior software engineer. Write clean, production-quality code in ${inputs.language || "Python"} for:\n"${inputs.task}"\n\n` +
-        `Structure your response as:\n` +
-        `**Code:**\n\`\`\`${(inputs.language || "python").toLowerCase()}\n[complete, runnable code with inline comments]\n\`\`\`\n\n` +
-        `**How it works:** [clear explanation of the logic]\n\n` +
-        `**Usage example:** [how to run or use it]\n\n` +
-        `**Edge cases:** [what to watch out for]` +
-        lNote
+        `You are an expert customer relationship manager for a small business.\n\n` +
+        `Business type: ${inputs.business}\n` +
+        `Customer complaint: ${inputs.complaint}\n\n` +
+        `Write a professional customer reply that:\n` +
+        `- Opens with genuine empathy and calms the customer immediately\n` +
+        `- Uses 1-2 smile emojis naturally to keep tone warm 😊\n` +
+        `- Acknowledges the issue without making excuses\n` +
+        `- Offers a clear solution or next step\n` +
+        `- Ends in a way that strengthens the relationship\n` +
+        `- Sounds human and caring, never corporate or cold\n` +
+        `Keep it sincere and concise.` + lNote
       );
 
-    case "prompt":
+    case "review":
       return (
-        `You are a master prompt engineer. Generate 3 highly optimized AI prompts for:\n"${inputs.description}"\n\n` +
-        `Provide exactly:\n` +
-        `**Prompt 1 — Midjourney:**\n[detailed visual prompt with style, lighting, composition, and quality modifiers]\n\n` +
-        `**Prompt 2 — DALL-E 3:**\n[descriptive prompt leveraging DALL-E's natural language understanding]\n\n` +
-        `**Prompt 3 — ChatGPT:**\n[structured text prompt to elicit the best response]\n\n` +
-        `For each, add one sentence explaining what makes it effective.` +
-        lNote
+        `You are a customer relationship expert. Write a natural review request message.\n\n` +
+        `Customer name: ${inputs.name}\n` +
+        `What they bought: ${inputs.product}\n` +
+        `Their experience: ${inputs.experience}\n\n` +
+        `Write a warm, personal message asking for a review that:\n` +
+        `- Feels genuine and personal, not copy-paste\n` +
+        `- References their specific purchase naturally\n` +
+        `- Makes leaving a review feel easy and appreciated\n` +
+        `- Does NOT beg or pressure\n` +
+        `- Includes where to leave the review (Google/Facebook)\n` +
+        `- Is short enough to read in 10 seconds\n` +
+        `The customer should WANT to leave a review after reading this.` + lNote
       );
 
-    case "hook":
+    case "valuedefender":
       return (
-        `You are a viral content strategist. Create 5 scroll-stopping hooks for ${inputs.platform || "TikTok"} about "${inputs.topic}".\n` +
-        `Each hook must be ≤20 words, create instant curiosity or urgency, and demand attention.\n\n` +
-        `Format:\n` +
-        `**Hook 1:** [text] — *Why it works: [one-line reason]*\n` +
-        `**Hook 2:** [text] — *Why it works: [one-line reason]*\n` +
-        `**Hook 3:** [text] — *Why it works: [one-line reason]*\n` +
-        `**Hook 4:** [text] — *Why it works: [one-line reason]*\n` +
-        `**Hook 5:** [text] — *Why it works: [one-line reason]*` +
-        lNote
+        `You are a persuasive sales expert helping a small business owner respond to a price objection.\n\n` +
+        `Our product/service: ${inputs.product}\n` +
+        `Customer objection: ${inputs.objection}\n` +
+        `Our unique advantages: ${inputs.advantages}\n\n` +
+        `Write a confident, value-focused reply that:\n` +
+        `- Acknowledges their concern without being defensive\n` +
+        `- Highlights real value and difference — not just price\n` +
+        `- Uses 1-2 specific reasons why we are worth it\n` +
+        `- Keeps the customer engaged and interested\n` +
+        `- Does NOT desperately chase or pressure them\n` +
+        `- Ends with a soft next step that keeps conversation open\n` +
+        `Tone: confident, friendly, professional. Not pushy.` + lNote
       );
 
-    case "translate":
+    case "supplier":
       return (
-        `You are a professional translator with deep cultural expertise.\n` +
-        `Translate this text from ${inputs.sourceLang || "Auto-detect"} to ${inputs.targetLang || "English"}, ` +
-        `preserving tone, nuance, and cultural context:\n\n"${inputs.text}"\n\n` +
-        `Provide:\n` +
-        `**Translation:**\n[the translated text]\n\n` +
-        `**Translator's Notes:**\n[cultural nuances adjusted, idioms handled, or context preserved]` +
-        lNote
-      );
-
-    case "editor":
-      return (
-        `You are a senior editor. Improve this text with a ${inputs.style || "Professional"} style:\n\n"${inputs.text}"\n\n` +
-        `Provide:\n` +
-        `**Improved Version:**\n[polished text]\n\n` +
-        `**Changes Made:**\n[bullet-point list of specific improvements and the reasoning behind each]` +
-        lNote
-      );
-
-    case "research":
-      return (
-        `You are a thorough research analyst. Research "${inputs.topic}" comprehensively.\n\n` +
-        `Provide:\n` +
-        `**Executive Summary:** [2–3 paragraph overview]\n\n` +
-        `**Key Findings:** [5+ bullet points with the most important facts]\n\n` +
-        `**Notable Statistics:** [data points with context]\n\n` +
-        `**Perspectives & Debates:** [different viewpoints if applicable]\n\n` +
-        `**Conclusion:** [implications and key takeaways]` +
-        lNote
-      );
-
-    case "marketing":
-      return (
-        `You are a senior marketing strategist. Create a marketing plan for "${inputs.product}" targeting "${inputs.audience}".\n\n` +
-        `Provide:\n` +
-        `**Strategy Overview:** [positioning and core message]\n\n` +
-        `**Ad Copy Variations:**\n- Variation A (emotional): [copy]\n- Variation B (benefit-focused): [copy]\n- Variation C (urgency): [copy]\n\n` +
-        `**Campaign Ideas:** [3 channel-specific campaign concepts]\n\n` +
-        `**Key Messaging:** [3–5 core messages]\n\n` +
-        `**Success Metrics:** [KPIs to track]` +
-        lNote
-      );
-
-    case "data":
-      return (
-        `You are a senior data analyst. Analyze this: "${inputs.data}"\n\n` +
-        `Provide:\n` +
-        `**Key Insights:** [3–5 most important findings]\n\n` +
-        `**Trends Identified:** [patterns observed]\n\n` +
-        `**Anomalies / Red Flags:** [anything unusual or concerning]\n\n` +
-        `**Actionable Recommendations:** [specific next steps]\n\n` +
-        `**Suggested Further Analysis:** [what deeper investigation would reveal]` +
-        lNote
-      );
-
-    case "tutor":
-      return (
-        `You are a patient, expert tutor. Explain "${inputs.topic}" for a ${inputs.level || "Teen"} learning level.\n\n` +
-        `Provide:\n` +
-        `**Simple Explanation:** [use everyday language and analogies appropriate for a ${inputs.level || "Teen"}]\n\n` +
-        `**Real-World Examples:**\n1. [example]\n2. [example]\n\n` +
-        `**Common Misconceptions:** [what people often get wrong]\n\n` +
-        `**Practice Questions:**\n1. [question] → *Answer: [answer]*\n2. [question] → *Answer: [answer]*\n3. [question] → *Answer: [answer]*\n\n` +
-        `**Next Steps:** [how to learn more about this topic]` +
-        lNote
+        `You are a B2B negotiation expert with 20 years experience in supplier negotiations.\n\n` +
+        `Product needed: ${inputs.product}\n` +
+        `Quantity: ${inputs.quantity}\n` +
+        `Current price offered: ${inputs.currentPrice}\n` +
+        `Target price: ${inputs.targetPrice}\n\n` +
+        `Write a professional negotiation message that:\n` +
+        `- Opens by establishing a partnership mindset, not just haggling\n` +
+        `- Uses volume/loyalty as leverage professionally\n` +
+        `- Makes a specific counter-offer with clear reasoning\n` +
+        `- Anticipates supplier pushback and addresses it proactively\n` +
+        `- Shows you are serious buyer worth long-term relationship\n` +
+        `- Ends with clear call to action\n\n` +
+        `Also provide:\n` +
+        `**Key negotiation points to mention in follow-up:**\n` +
+        `[3 bullet points]\n\n` +
+        `**If supplier says price is fixed:**\n` +
+        `[What to say next]` + lNote
       );
 
     default:

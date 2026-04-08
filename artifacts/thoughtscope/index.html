@@ -520,10 +520,11 @@
           <span id="sbHowToIcon" style="transition:transform .2s;">▾</span>
         </button>
         <div id="sbHowTo" style="padding:0 .875rem .25rem;">
-          <div class="sb-step"><span>1️⃣</span><span>Type your question</span></div>
-          <div class="sb-step"><span>2️⃣</span><span>Pick your context</span></div>
-          <div class="sb-step"><span>3️⃣</span><span>Answer AI questions</span></div>
-          <div class="sb-step"><span>4️⃣</span><span>Get deep analysis</span></div>
+          <div class="sb-step"><span>1️⃣</span><span>Type your business question</span></div>
+          <div class="sb-step"><span>2️⃣</span><span>Menticx validates & improves your question</span></div>
+          <div class="sb-step"><span>3️⃣</span><span>See exactly how AI is thinking</span></div>
+          <div class="sb-step"><span>4️⃣</span><span>Get a deep, actionable answer</span></div>
+          <div class="sb-step"><span>🤖</span><span>Use Agents for specific business tasks</span></div>
         </div>
       </div>
 
@@ -532,40 +533,15 @@
       <!-- AGENTS (collapsible) -->
       <div class="sb-section">
         <button class="sb-hdr" onclick="toggleSbSection('sbAgents','sbAgentsIcon')">
-          <span>🤖 Agents <span style="font-size:.65rem;opacity:.6;font-weight:500;">(10)</span></span>
+          <span>🤖 Agents <span style="font-size:.65rem;opacity:.6;font-weight:500;">(5)</span></span>
           <span id="sbAgentsIcon" style="transition:transform .2s;">▾</span>
         </button>
         <div id="sbAgents" style="padding:0 .5rem .25rem;">
-          <button onclick="openAgent('content')" class="sidebar-agent-btn">📝<div><span>Content Writer</span><small>Blog & social copy</small></div></button>
-          <button onclick="openAgent('code')" class="sidebar-agent-btn">💻<div><span>Code Agent</span><small>Code with explanation</small></div></button>
-          <button onclick="openAgent('prompt')" class="sidebar-agent-btn">🎨<div><span>Prompt Engineer</span><small>Optimized prompts</small></div></button>
-          <button onclick="openAgent('hook')" class="sidebar-agent-btn">🎣<div><span>Hook Builder</span><small>Viral hooks</small></div></button>
-          <button onclick="openAgent('translate')" class="sidebar-agent-btn">🌐<div><span>Language Bridge</span><small>Translate & preserve tone</small></div></button>
-          <button onclick="openAgent('editor')" class="sidebar-agent-btn">✍️<div><span>Editor Agent</span><small>Improve text</small></div></button>
-          <button onclick="openAgent('research')" class="sidebar-agent-btn">📚<div><span>Research Agent</span><small>Findings & sources</small></div></button>
-          <button onclick="openAgent('marketing')" class="sidebar-agent-btn">🎯<div><span>Marketing Agent</span><small>Strategy & ad copy</small></div></button>
-          <button onclick="openAgent('data')" class="sidebar-agent-btn">📊<div><span>Data Analyst</span><small>Insights & trends</small></div></button>
-          <button onclick="openAgent('tutor')" class="sidebar-agent-btn">🎓<div><span>Tutor Agent</span><small>Simple explanations</small></div></button>
-        </div>
-      </div>
-
-      <div style="height:1px;background:var(--border);margin:.1rem .875rem;"></div>
-
-      <!-- TEMPLATES (collapsible) -->
-      <div class="sb-section">
-        <button class="sb-hdr" onclick="toggleSbSection('sbTemplates','sbTemplatesIcon')">
-          <span>📚 Templates <span style="font-size:.65rem;opacity:.6;font-weight:500;">(8)</span></span>
-          <span id="sbTemplatesIcon" style="transition:transform .2s;">▾</span>
-        </button>
-        <div id="sbTemplates" style="padding:0 .5rem .25rem;">
-          <button class="sidebar-tpl-btn" onclick="useTemplate('How to start a profitable e-commerce business from scratch?','Business/Startup')">🛒 E-commerce Business</button>
-          <button class="sidebar-tpl-btn" onclick="useTemplate('How to create a 6-month career roadmap to go from junior to senior developer?','Career/Job')">🚀 Junior → Senior Dev</button>
-          <button class="sidebar-tpl-btn" onclick="useTemplate('How to create a healthy morning routine that improves productivity?','Health/Wellness')">🌅 Morning Routine</button>
-          <button class="sidebar-tpl-btn" onclick="useTemplate('How to invest $1000 wisely as a beginner in 2025?','Finance/Money')">💰 Invest $1000</button>
-          <button class="sidebar-tpl-btn" onclick="useTemplate('How to learn a new skill 10x faster using the Feynman Technique?','Education/Learning')">🧠 Learn 10x Faster</button>
-          <button class="sidebar-tpl-btn" onclick="useTemplate('How to build a personal brand on social media from zero followers?','Marketing/Social')">🌟 Personal Brand</button>
-          <button class="sidebar-tpl-btn" onclick="useTemplate('How to build AI-powered side projects and monetize them in 2025?','Technology/AI')">🤖 AI Side Projects</button>
-          <button class="sidebar-tpl-btn" onclick="useTemplate('How to negotiate a 30% salary increase in my next job offer?','Career/Negotiation')">💼 Negotiate Salary</button>
+          <button onclick="openAgent('whatsapp')" class="sidebar-agent-btn">📱<div><span>WhatsApp Reply</span><small>Fast customer replies</small></div></button>
+          <button onclick="openAgent('supplier')" class="sidebar-agent-btn">🤝<div><span>Supplier Negotiator</span><small>Better deals, more profit</small></div></button>
+          <button onclick="openAgent('valuedefender')" class="sidebar-agent-btn">💪<div><span>Value Defender</span><small>Handle price objections</small></div></button>
+          <button onclick="openAgent('review')" class="sidebar-agent-btn">⭐<div><span>Review Request</span><small>Get 5-star reviews</small></div></button>
+          <button onclick="openAgent('complaint')" class="sidebar-agent-btn">😤<div><span>Complaint Handler</span><small>Calm angry customers</small></div></button>
         </div>
       </div>
 
@@ -668,16 +644,16 @@
         <button id="tabAdaptive" class="mode-tab"        onclick="switchMode('adaptive')">💡 Ask Anything</button>
       </div>
 
-      <!-- ─── MODE 1: Analyze ChatGPT conversation ─── -->
+      <!-- ─── MODE 1: Ask your business question ─── -->
       <div id="modeAnalyze" style="padding:1.5rem;">
         <div style="display:flex;align-items:center;gap:.625rem;margin-bottom:1.125rem;">
-          <div class="g-bg" style="width:34px;height:34px;border-radius:.625rem;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0;">🎯</div>
+          <div class="g-bg" style="width:34px;height:34px;border-radius:.625rem;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0;">🧠</div>
           <div>
-            <h3 style="font-weight:800;font-size:.95rem;color:var(--text);letter-spacing:.02em;">PASTE YOUR CHATGPT CONVERSATION</h3>
-            <p style="font-size:.78rem;color:var(--text2);">Analyze the reasoning behind any AI response</p>
+            <h3 style="font-weight:800;font-size:.95rem;color:var(--text);letter-spacing:.02em;">ASK YOUR BUSINESS QUESTION</h3>
+            <p style="font-size:.78rem;color:var(--text2);">Menticx validates, thinks, and gives you a deep answer</p>
           </div>
         </div>
-        <textarea id="analysisInput" class="textarea-field" placeholder="Paste ChatGPT link or your question + ChatGPT's answer here..." style="margin-bottom:1rem;" oninput="onInputChange();showSquare('how-ai-works');"></textarea>
+        <textarea id="analysisInput" class="textarea-field" placeholder="Type your business question here — Menticx will validate, think, and answer..." style="margin-bottom:1rem;" oninput="onInputChange();showSquare('how-ai-works');"></textarea>
         <div style="margin-bottom:1rem;">
           <p style="font-size:.78rem;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.5rem;">Your context</p>
           <div style="display:flex;flex-wrap:wrap;gap:.5rem;">
@@ -755,7 +731,7 @@
     <div id="analysisEmptyState" class="card2" style="padding:2.5rem 1.25rem;text-align:center;margin-top:1rem;">
       <div style="font-size:2.5rem;margin-bottom:.875rem;">🔍</div>
       <p style="font-size:.875rem;font-weight:600;color:var(--text);margin-bottom:.35rem;">Ready to analyze</p>
-      <p style="font-size:.8rem;color:var(--text2);line-height:1.65;">Paste a ChatGPT conversation above and click Analyze. Results appear here instantly.</p>
+      <p style="font-size:.8rem;color:var(--text2);line-height:1.65;">Type your business question above and click Analyze. Menticx validates your question then gives you a deep answer.</p>
     </div>
 
     <!-- Analysis output -->
@@ -764,7 +740,18 @@
         <h3 style="font-weight:700;font-size:.95rem;color:var(--text);">Analysis Results</h3>
         <button onclick="clearOutput()" style="font-size:.78rem;color:var(--text2);background:transparent;border:none;cursor:pointer;">Clear</button>
       </div>
-      <div id="analysisContent"></div>
+      <div id="analysisContent">
+        <!-- Card 1: Question Analysis -->
+        <div id="validationCard" style="display:none;border-left:3px solid #10A37F;padding:1rem;background:rgba(16,163,127,0.05);border-radius:0 .75rem .75rem 0;margin-bottom:1rem;">
+          <h4 style="font-size:.85rem;font-weight:700;color:#10A37F;margin-bottom:.5rem;">🔍 Question Analysis</h4>
+          <div id="validationOutput"></div>
+        </div>
+        <!-- Card 2: Deep Answer -->
+        <div id="answerCard" style="display:none;border-left:3px solid #3B82F6;padding:1rem;background:rgba(59,130,246,0.05);border-radius:0 .75rem .75rem 0;">
+          <h4 style="font-size:.85rem;font-weight:700;color:#3B82F6;margin-bottom:.5rem;">💡 Deep Answer + AI Thinking</h4>
+          <div id="answerOutput"></div>
+        </div>
+      </div>
     </div>
 
     <!-- Adaptive Q&A empty state -->
@@ -822,7 +809,6 @@
         <p style="font-size:.72rem;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.625rem;">What's next?</p>
         <div style="display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;">
           <button onclick="openFollowUp()" class="btn-o" style="font-size:.8rem;padding:.45rem .875rem;border-radius:.75rem;">💬 Follow-up</button>
-          <button onclick="navTemplatesClick()" class="btn-o" style="font-size:.8rem;padding:.45rem .875rem;border-radius:.75rem;">📚 Template</button>
           <button onclick="getComparison()" class="btn-o" style="font-size:.8rem;padding:.45rem .875rem;border-radius:.75rem;">⚖️ Compare</button>
           <button onclick="exportToPDF()" class="btn-o" style="font-size:.8rem;padding:.45rem .875rem;border-radius:.75rem;">📥 PDF</button>
           <button onclick="shareResult()" class="btn-o" style="font-size:.8rem;padding:.45rem .875rem;border-radius:.75rem;">🔗 Share</button>
@@ -841,111 +827,61 @@
 <section id="agentsPanel" style="display:none;max-width:1100px;margin:0 auto;padding:0 1.5rem 3rem;">
   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;">
     <div>
-      <h3 style="font-size:1.05rem;font-weight:800;color:var(--text);margin-bottom:.2rem;">🤖 AI Agents</h3>
-      <p style="font-size:.8rem;color:var(--text2);">10 specialized agents — each uses 1 credit</p>
+      <h3 style="font-size:1.05rem;font-weight:800;color:var(--text);margin-bottom:.2rem;">🤖 Business AI Agents</h3>
+      <p style="font-size:.8rem;color:var(--text2);">5 smart business agents — each uses 1 credit</p>
     </div>
     <span style="font-size:.75rem;color:var(--text2);background:rgba(16,163,127,.08);border:1px solid rgba(16,163,127,.15);padding:.25rem .75rem;border-radius:9999px;">✨ Powered by Gemini</span>
   </div>
   <div class="agent-grid">
 
-    <!-- 1: Content Writer -->
-    <div class="card agent-card" onclick="openAgent('content')">
-      <div class="agent-icon-box g-bg">📝</div>
+    <!-- Agent 1: WhatsApp Reply -->
+    <div class="agent-card card2" onclick="openAgent('whatsapp')">
+      <div class="agent-icon-box" style="background:rgba(37,211,102,0.12);">📱</div>
       <div>
-        <p style="font-size:.875rem;font-weight:700;color:var(--text);margin-bottom:.2rem;">Content Writer</p>
-        <p style="font-size:.75rem;color:var(--text2);line-height:1.5;">Blog, Twitter, LinkedIn & Instagram copy</p>
+        <div style="font-size:.875rem;font-weight:700;color:var(--text);">WhatsApp Reply</div>
+        <div style="font-size:.75rem;color:var(--text2);margin-top:.2rem;">Fast, friendly customer replies</div>
       </div>
-      <button class="agent-use-btn" onclick="event.stopPropagation();openAgent('content')">Use Agent →</button>
+      <button class="agent-use-btn">Use Agent →</button>
     </div>
 
-    <!-- 2: Code Agent -->
-    <div class="card agent-card" onclick="openAgent('code')">
-      <div class="agent-icon-box g-bg">💻</div>
+    <!-- Agent 2: Supplier Negotiator -->
+    <div class="agent-card card2" onclick="openAgent('supplier')">
+      <div class="agent-icon-box" style="background:rgba(168,85,247,0.12);">🤝</div>
       <div>
-        <p style="font-size:.875rem;font-weight:700;color:var(--text);margin-bottom:.2rem;">Code Agent</p>
-        <p style="font-size:.75rem;color:var(--text2);line-height:1.5;">Clean code with explanation in your language</p>
+        <div style="font-size:.875rem;font-weight:700;color:var(--text);">Supplier Negotiator</div>
+        <div style="font-size:.75rem;color:var(--text2);margin-top:.2rem;">Get better deals from suppliers</div>
       </div>
-      <button class="agent-use-btn" onclick="event.stopPropagation();openAgent('code')">Use Agent →</button>
+      <button class="agent-use-btn">Use Agent →</button>
     </div>
 
-    <!-- 3: Prompt Engineer -->
-    <div class="card agent-card" onclick="openAgent('prompt')">
-      <div class="agent-icon-box g-bg">🎨</div>
+    <!-- Agent 3: Value Defender -->
+    <div class="agent-card card2" onclick="openAgent('valuedefender')">
+      <div class="agent-icon-box" style="background:rgba(59,130,246,0.12);">💪</div>
       <div>
-        <p style="font-size:.875rem;font-weight:700;color:var(--text);margin-bottom:.2rem;">Prompt Engineer</p>
-        <p style="font-size:.75rem;color:var(--text2);line-height:1.5;">3 optimized prompts for Midjourney, DALL-E, GPT</p>
+        <div style="font-size:.875rem;font-weight:700;color:var(--text);">Value Defender</div>
+        <div style="font-size:.75rem;color:var(--text2);margin-top:.2rem;">Handle "it's cheaper elsewhere"</div>
       </div>
-      <button class="agent-use-btn" onclick="event.stopPropagation();openAgent('prompt')">Use Agent →</button>
+      <button class="agent-use-btn">Use Agent →</button>
     </div>
 
-    <!-- 4: Hook Builder -->
-    <div class="card agent-card" onclick="openAgent('hook')">
-      <div class="agent-icon-box g-bg">🎣</div>
+    <!-- Agent 4: Review Request -->
+    <div class="agent-card card2" onclick="openAgent('review')">
+      <div class="agent-icon-box" style="background:rgba(234,179,8,0.12);">⭐</div>
       <div>
-        <p style="font-size:.875rem;font-weight:700;color:var(--text);margin-bottom:.2rem;">Hook Builder</p>
-        <p style="font-size:.75rem;color:var(--text2);line-height:1.5;">5 viral hooks for any platform</p>
+        <div style="font-size:.875rem;font-weight:700;color:var(--text);">Review Request</div>
+        <div style="font-size:.75rem;color:var(--text2);margin-top:.2rem;">Get more 5-star reviews naturally</div>
       </div>
-      <button class="agent-use-btn" onclick="event.stopPropagation();openAgent('hook')">Use Agent →</button>
+      <button class="agent-use-btn">Use Agent →</button>
     </div>
 
-    <!-- 5: Language Bridge -->
-    <div class="card agent-card" onclick="openAgent('translate')">
-      <div class="agent-icon-box g-bg">🌐</div>
+    <!-- Agent 5: Complaint Handler -->
+    <div class="agent-card card2" onclick="openAgent('complaint')">
+      <div class="agent-icon-box" style="background:rgba(239,68,68,0.12);">😤</div>
       <div>
-        <p style="font-size:.875rem;font-weight:700;color:var(--text);margin-bottom:.2rem;">Language Bridge</p>
-        <p style="font-size:.75rem;color:var(--text2);line-height:1.5;">Translate preserving tone & context</p>
+        <div style="font-size:.875rem;font-weight:700;color:var(--text);">Complaint Handler</div>
+        <div style="font-size:.75rem;color:var(--text2);margin-top:.2rem;">Turn angry customers into loyal ones</div>
       </div>
-      <button class="agent-use-btn" onclick="event.stopPropagation();openAgent('translate')">Use Agent →</button>
-    </div>
-
-    <!-- 6: Editor Agent -->
-    <div class="card agent-card" onclick="openAgent('editor')">
-      <div class="agent-icon-box g-bg">✍️</div>
-      <div>
-        <p style="font-size:.875rem;font-weight:700;color:var(--text);margin-bottom:.2rem;">Editor Agent</p>
-        <p style="font-size:.75rem;color:var(--text2);line-height:1.5;">Improve text with changes explained</p>
-      </div>
-      <button class="agent-use-btn" onclick="event.stopPropagation();openAgent('editor')">Use Agent →</button>
-    </div>
-
-    <!-- 7: Research Agent -->
-    <div class="card agent-card" onclick="openAgent('research')">
-      <div class="agent-icon-box g-bg">📚</div>
-      <div>
-        <p style="font-size:.875rem;font-weight:700;color:var(--text);margin-bottom:.2rem;">Research Agent</p>
-        <p style="font-size:.75rem;color:var(--text2);line-height:1.5;">Key findings, stats & sources</p>
-      </div>
-      <button class="agent-use-btn" onclick="event.stopPropagation();openAgent('research')">Use Agent →</button>
-    </div>
-
-    <!-- 8: Marketing Agent -->
-    <div class="card agent-card" onclick="openAgent('marketing')">
-      <div class="agent-icon-box g-bg">🎯</div>
-      <div>
-        <p style="font-size:.875rem;font-weight:700;color:var(--text);margin-bottom:.2rem;">Marketing Agent</p>
-        <p style="font-size:.75rem;color:var(--text2);line-height:1.5;">Strategy, ad copy & campaign ideas</p>
-      </div>
-      <button class="agent-use-btn" onclick="event.stopPropagation();openAgent('marketing')">Use Agent →</button>
-    </div>
-
-    <!-- 9: Data Analyst -->
-    <div class="card agent-card" onclick="openAgent('data')">
-      <div class="agent-icon-box g-bg">📊</div>
-      <div>
-        <p style="font-size:.875rem;font-weight:700;color:var(--text);margin-bottom:.2rem;">Data Analyst</p>
-        <p style="font-size:.75rem;color:var(--text2);line-height:1.5;">Insights, trends & recommendations</p>
-      </div>
-      <button class="agent-use-btn" onclick="event.stopPropagation();openAgent('data')">Use Agent →</button>
-    </div>
-
-    <!-- 10: Tutor Agent -->
-    <div class="card agent-card" onclick="openAgent('tutor')">
-      <div class="agent-icon-box g-bg">🎓</div>
-      <div>
-        <p style="font-size:.875rem;font-weight:700;color:var(--text);margin-bottom:.2rem;">Tutor Agent</p>
-        <p style="font-size:.75rem;color:var(--text2);line-height:1.5;">Simple explanations with practice questions</p>
-      </div>
-      <button class="agent-use-btn" onclick="event.stopPropagation();openAgent('tutor')">Use Agent →</button>
+      <button class="agent-use-btn">Use Agent →</button>
     </div>
 
   </div>
@@ -953,14 +889,7 @@
 
 
 <!-- ── TEMPLATES SECTION ── -->
-<section id="templatesSection" style="max-width:1200px;margin:0 auto;padding:1.5rem;display:none;">
-  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;flex-wrap:wrap;gap:.75rem;">
-    <div>
-      <h3 style="font-size:1.05rem;font-weight:800;color:var(--text);margin-bottom:.2rem;">📚 Templates Library</h3>
-      <p style="font-size:.8rem;color:var(--text2);">Ready-made prompts — click to launch instantly</p>
-    </div>
-    <button onclick="hideTemplates()" style="font-size:.8rem;color:var(--text2);background:transparent;border:1px solid var(--border);border-radius:.5rem;padding:.35rem .75rem;cursor:pointer;">← Back to Dashboard</button>
-  </div>
+<section id="templatesSection" style="display:none;">
   <div class="tpl-grid">
 
     <div class="tpl-card" onclick="useTemplate('How to start a profitable e-commerce business from scratch?','Business/Startup')">
@@ -1101,10 +1030,10 @@
       🧠 AI Thought Analyzer
     </div>
     <h1 style="font-size:clamp(2.5rem,7vw,4.6rem);font-weight:900;line-height:1.06;margin-bottom:1.25rem;color:var(--text);">
-      See How <span class="g-text">AI Really&nbsp;Thinks</span>
+      Ask Better. Think Deeper. <span class="g-text">Decide&nbsp;Smarter.</span>
     </h1>
     <p style="font-size:1.1rem;line-height:1.68;color:var(--text2);max-width:580px;margin:0 auto 2.5rem;">
-      Paste any ChatGPT conversation — get instant deep analysis of why AI gave that answer, what it assumed, and how to get a better one.
+      Menticx validates your question, shows you how AI thinks, then gives you a deep answer — built for small businesses.
     </p>
     <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.875rem;margin-bottom:2.75rem;">
       <button onclick="openModal('signup')" class="btn-p pulse" style="font-size:1rem;padding:.875rem 2rem;">
@@ -1132,9 +1061,9 @@
       <p style="font-size:1rem;color:var(--text2);max-width:480px;margin:0 auto;">Six powerful capabilities that transform how you analyze AI conversations.</p>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.125rem;">
-      <div class="card fu d1" style="padding:1.5rem;"><div class="g-bg" style="width:38px;height:38px;border-radius:.625rem;display:flex;align-items:center;justify-content:center;margin-bottom:.875rem;font-size:1.1rem;">🔍</div><h3 style="font-weight:700;color:var(--text);margin-bottom:.375rem;font-size:.95rem;">AI Thought Analysis</h3><p style="font-size:.875rem;color:var(--text2);line-height:1.65;">Reveals exactly why ChatGPT gave that specific answer, surfacing hidden assumptions and missing context.</p></div>
-      <div class="card fu d2" style="padding:1.5rem;"><div class="g-bg" style="width:38px;height:38px;border-radius:.625rem;display:flex;align-items:center;justify-content:center;margin-bottom:.875rem;font-size:1.1rem;">🤖</div><h3 style="font-weight:700;color:var(--text);margin-bottom:.375rem;font-size:.95rem;">Boss Agent</h3><p style="font-size:.875rem;color:var(--text2);line-height:1.65;">Auto-detects your context and instantly recommends the best specialized agent for your task.</p></div>
-      <div class="card fu d3" style="padding:1.5rem;"><div class="g-bg" style="width:38px;height:38px;border-radius:.625rem;display:flex;align-items:center;justify-content:center;margin-bottom:.875rem;font-size:1.1rem;">⚡</div><h3 style="font-weight:700;color:var(--text);margin-bottom:.375rem;font-size:.95rem;">10 Specialized Agents</h3><p style="font-size:.875rem;color:var(--text2);line-height:1.65;">Content, Code, Prompt, Hook, Language Bridge and 5 more — purpose-built for every task.</p></div>
+      <div class="card fu d1" style="padding:1.5rem;"><div class="g-bg" style="width:38px;height:38px;border-radius:.625rem;display:flex;align-items:center;justify-content:center;margin-bottom:.875rem;font-size:1.1rem;">🔍</div><h3 style="font-weight:700;color:var(--text);margin-bottom:.375rem;font-size:.95rem;">Question Validation</h3><p style="font-size:.875rem;color:var(--text2);line-height:1.65;">Menticx scores your question, spots what's missing, and rewrites it to get you a much better answer.</p></div>
+      <div class="card fu d2" style="padding:1.5rem;"><div class="g-bg" style="width:38px;height:38px;border-radius:.625rem;display:flex;align-items:center;justify-content:center;margin-bottom:.875rem;font-size:1.1rem;">🧠</div><h3 style="font-weight:700;color:var(--text);margin-bottom:.375rem;font-size:.95rem;">AI Thinking Process</h3><p style="font-size:.875rem;color:var(--text2);line-height:1.65;">See step-by-step how AI reasons through your question — assumptions, factors, logic, and priorities.</p></div>
+      <div class="card fu d3" style="padding:1.5rem;"><div class="g-bg" style="width:38px;height:38px;border-radius:.625rem;display:flex;align-items:center;justify-content:center;margin-bottom:.875rem;font-size:1.1rem;">⚡</div><h3 style="font-weight:700;color:var(--text);margin-bottom:.375rem;font-size:.95rem;">5 Smart Business Agents</h3><p style="font-size:.875rem;color:var(--text2);line-height:1.65;">WhatsApp replies, supplier deals, price objections, review requests, complaint handling — all in one click.</p></div>
       <div class="card fu d4" style="padding:1.5rem;"><div class="g-bg" style="width:38px;height:38px;border-radius:.625rem;display:flex;align-items:center;justify-content:center;margin-bottom:.875rem;font-size:1.1rem;">🌍</div><h3 style="font-weight:700;color:var(--text);margin-bottom:.375rem;font-size:.95rem;">Multi-Language</h3><p style="font-size:.875rem;color:var(--text2);line-height:1.65;">Full support for English, Urdu, Hindi, Arabic, and 20+ additional languages.</p></div>
       <div class="card fu d5" style="padding:1.5rem;"><div class="g-bg" style="width:38px;height:38px;border-radius:.625rem;display:flex;align-items:center;justify-content:center;margin-bottom:.875rem;font-size:1.1rem;">💳</div><h3 style="font-weight:700;color:var(--text);margin-bottom:.375rem;font-size:.95rem;">Smart Credits</h3><p style="font-size:.875rem;color:var(--text2);line-height:1.65;">Free 5 credits/month, Pro 100, Business unlimited — scales precisely with your needs.</p></div>
       <div class="card fu d6" style="padding:1.5rem;"><div class="g-bg" style="width:38px;height:38px;border-radius:.625rem;display:flex;align-items:center;justify-content:center;margin-bottom:.875rem;font-size:1.1rem;">🔒</div><h3 style="font-weight:700;color:var(--text);margin-bottom:.375rem;font-size:.95rem;">Privacy First</h3><p style="font-size:.875rem;color:var(--text2);line-height:1.65;">Zero-retention policy. Your data is never stored, logged, or sold. Period.</p></div>
@@ -1153,13 +1082,13 @@
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:2rem;text-align:center;">
       <div class="fu d1">
         <div style="position:relative;display:inline-flex;align-items:center;justify-content:center;width:64px;height:64px;border-radius:50%;margin-bottom:1rem;font-size:1.5rem;" class="g-bg">📄<span style="position:absolute;top:-4px;right:-4px;width:20px;height:20px;border-radius:50%;background:var(--bg);border:1px solid var(--border);font-size:.68rem;font-weight:700;color:var(--text);display:flex;align-items:center;justify-content:center;">1</span></div>
-        <h3 style="font-weight:700;color:var(--text);margin-bottom:.5rem;font-size:.95rem;">Paste your conversation</h3>
-        <p style="font-size:.875rem;color:var(--text2);line-height:1.65;">Copy your ChatGPT conversation or question and paste it into Menticx.</p>
+        <h3 style="font-weight:700;color:var(--text);margin-bottom:.5rem;font-size:.95rem;">Type your business question</h3>
+        <p style="font-size:.875rem;color:var(--text2);line-height:1.65;">Enter your business question — about sales, pricing, customers, suppliers, or anything else.</p>
       </div>
       <div class="fu d2">
         <div style="position:relative;display:inline-flex;align-items:center;justify-content:center;width:64px;height:64px;border-radius:50%;margin-bottom:1rem;font-size:1.5rem;" class="g-bg">🧠<span style="position:absolute;top:-4px;right:-4px;width:20px;height:20px;border-radius:50%;background:var(--bg);border:1px solid var(--border);font-size:.68rem;font-weight:700;color:var(--text);display:flex;align-items:center;justify-content:center;">2</span></div>
-        <h3 style="font-weight:700;color:var(--text);margin-bottom:.5rem;font-size:.95rem;">AI analyzes deeply</h3>
-        <p style="font-size:.875rem;color:var(--text2);line-height:1.65;">Our system uncovers hidden assumptions, missing information, and reasoning gaps.</p>
+        <h3 style="font-weight:700;color:var(--text);margin-bottom:.5rem;font-size:.95rem;">Menticx validates & improves</h3>
+        <p style="font-size:.875rem;color:var(--text2);line-height:1.65;">Your question is scored, improved, and then answered with full AI thinking process shown step by step.</p>
       </div>
       <div class="fu d3">
         <div style="position:relative;display:inline-flex;align-items:center;justify-content:center;width:64px;height:64px;border-radius:50%;margin-bottom:1rem;font-size:1.5rem;" class="g-bg">💡<span style="position:absolute;top:-4px;right:-4px;width:20px;height:20px;border-radius:50%;background:var(--bg);border:1px solid var(--border);font-size:.68rem;font-weight:700;color:var(--text);display:flex;align-items:center;justify-content:center;">3</span></div>
@@ -1245,7 +1174,7 @@
       <h2 style="font-size:clamp(1.6rem,4vw,2.3rem);font-weight:800;color:var(--text);margin-bottom:.75rem;">Frequently asked questions</h2>
     </div>
     <div style="display:flex;flex-direction:column;gap:.75rem;" class="fu">
-      <div class="card" style="overflow:hidden;"><button onclick="toggleFaq(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.375rem;background:transparent;border:none;cursor:pointer;text-align:left;color:var(--text);"><span style="font-weight:600;font-size:.925rem;">What is Menticx?</span><svg class="faq-arrow" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;margin-left:1rem;color:var(--text2);"><path d="m6 9 6 6 6-6"/></svg></button><div class="faq-body" style="padding:0 1.375rem;"><p style="font-size:.875rem;color:var(--text2);line-height:1.7;padding-bottom:1.1rem;">Menticx is an AI deep research platform that analyzes ChatGPT conversations to reveal the underlying reasoning, hidden assumptions, and what's missing — then recommends the best specialized agent for your task.</p></div></div>
+      <div class="card" style="overflow:hidden;"><button onclick="toggleFaq(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.375rem;background:transparent;border:none;cursor:pointer;text-align:left;color:var(--text);"><span style="font-weight:600;font-size:.925rem;">What is Menticx?</span><svg class="faq-arrow" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;margin-left:1rem;color:var(--text2);"><path d="m6 9 6 6 6-6"/></svg></button><div class="faq-body" style="padding:0 1.375rem;"><p style="font-size:.875rem;color:var(--text2);line-height:1.7;padding-bottom:1.1rem;">Menticx is an AI deep research platform built for small businesses. It validates your question, shows you exactly how AI thinks, then gives you a deep actionable answer — plus 5 smart business agents for WhatsApp, suppliers, pricing, reviews, and complaints.</p></div></div>
       <div class="card" style="overflow:hidden;"><button onclick="toggleFaq(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.375rem;background:transparent;border:none;cursor:pointer;text-align:left;color:var(--text);"><span style="font-weight:600;font-size:.925rem;">How does the Boss Agent work?</span><svg class="faq-arrow" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;margin-left:1rem;color:var(--text2);"><path d="m6 9 6 6 6-6"/></svg></button><div class="faq-body" style="padding:0 1.375rem;"><p style="font-size:.875rem;color:var(--text2);line-height:1.7;padding-bottom:1.1rem;">The Boss Agent automatically reads your question and detects whether you're a developer, content creator, student, marketer, or researcher. It then routes you to the most appropriate of the 10 specialized agents instantly — no manual selection needed.</p></div></div>
       <div class="card" style="overflow:hidden;"><button onclick="toggleFaq(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.375rem;background:transparent;border:none;cursor:pointer;text-align:left;color:var(--text);"><span style="font-weight:600;font-size:.925rem;">Can I cancel anytime?</span><svg class="faq-arrow" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;margin-left:1rem;color:var(--text2);"><path d="m6 9 6 6 6-6"/></svg></button><div class="faq-body" style="padding:0 1.375rem;"><p style="font-size:.875rem;color:var(--text2);line-height:1.7;padding-bottom:1.1rem;">Yes. No long-term contracts, no cancellation fees. Cancel with one click — your access continues until end of your billing period.</p></div></div>
       <div class="card" style="overflow:hidden;"><button onclick="toggleFaq(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.375rem;background:transparent;border:none;cursor:pointer;text-align:left;color:var(--text);"><span style="font-weight:600;font-size:.925rem;">Is my data safe?</span><svg class="faq-arrow" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;margin-left:1rem;color:var(--text2);"><path d="m6 9 6 6 6-6"/></svg></button><div class="faq-body" style="padding:0 1.375rem;"><p style="font-size:.875rem;color:var(--text2);line-height:1.7;padding-bottom:1.1rem;">Zero-retention policy. Your conversations are analyzed in-memory and never stored. We do not train on your data. Privacy is non-negotiable.</p></div></div>
@@ -1375,14 +1304,14 @@ let currentLangName = localStorage.getItem('mn-lang-name') || 'English';
 
 // ── i18n strings ────────────────────────────────────────────
 const I18N = {
-  en: { nav_home:'Home', nav_dashboard:'Dashboard', nav_features:'Features', nav_about:'About', sign_in:'Sign In', sign_up:'Sign Up', sign_out:'Sign Out', analyze_btn:'Analyze — Uses 1 credit', analyzing:'Analyzing…', paste_placeholder:'Paste ChatGPT link or your question + ChatGPT\'s answer here...', your_context:'Your context', analysis_results:'Analysis Results', credits_remaining:'Credits Remaining', current_plan:'Current Plan', upgrade_plan:'Upgrade Plan ↑', no_credits:'You have no credits left. Upgrade your plan to continue.' },
-  ur: { nav_home:'ہوم', nav_dashboard:'ڈیش بورڈ', nav_features:'خصوصیات', nav_about:'بارے میں', sign_in:'سائن ان', sign_up:'سائن اپ', sign_out:'سائن آوٹ', analyze_btn:'تجزیہ کریں — 1 کریڈٹ استعمال ہوگا', analyzing:'تجزیہ ہو رہا ہے…', paste_placeholder:'یہاں ChatGPT گفتگو پیسٹ کریں...', your_context:'آپ کا سیاق', analysis_results:'تجزیہ کے نتائج', credits_remaining:'باقی کریڈٹ', current_plan:'موجودہ پلان', upgrade_plan:'اپگریڈ کریں ↑', no_credits:'کریڈٹ ختم ہو گئے۔ جاری رکھنے کے لیے پلان اپگریڈ کریں۔' },
-  hi: { nav_home:'होम', nav_dashboard:'डैशबोर्ड', nav_features:'विशेषताएं', nav_about:'के बारे में', sign_in:'साइन इन', sign_up:'साइन अप', sign_out:'साइन आउट', analyze_btn:'विश्लेषण करें — 1 क्रेडिट', analyzing:'विश्लेषण हो रहा है…', paste_placeholder:'यहाँ ChatGPT वार्तालाप पेस्ट करें...', your_context:'आपका संदर्भ', analysis_results:'विश्लेषण परिणाम', credits_remaining:'शेष क्रेडिट', current_plan:'वर्तमान योजना', upgrade_plan:'अपग्रेड करें ↑', no_credits:'क्रेडिट खत्म। जारी रखने के लिए प्लान अपग्रेड करें।' },
-  ar: { nav_home:'الرئيسية', nav_dashboard:'لوحة التحكم', nav_features:'الميزات', nav_about:'حول', sign_in:'تسجيل الدخول', sign_up:'إنشاء حساب', sign_out:'تسجيل الخروج', analyze_btn:'تحليل — يستخدم رصيداً', analyzing:'جارٍ التحليل…', paste_placeholder:'الصق محادثة ChatGPT هنا...', your_context:'سياقك', analysis_results:'نتائج التحليل', credits_remaining:'الرصيد المتبقي', current_plan:'الخطة الحالية', upgrade_plan:'ترقية الخطة ↑', no_credits:'نفدت رصيدك. قم بترقية خطتك للمتابعة.' },
-  es: { nav_home:'Inicio', nav_dashboard:'Panel', nav_features:'Características', nav_about:'Acerca de', sign_in:'Iniciar sesión', sign_up:'Registrarse', sign_out:'Cerrar sesión', analyze_btn:'Analizar — Usa 1 crédito', analyzing:'Analizando…', paste_placeholder:'Pega tu conversación de ChatGPT aquí...', your_context:'Tu contexto', analysis_results:'Resultados del análisis', credits_remaining:'Créditos restantes', current_plan:'Plan actual', upgrade_plan:'Mejorar plan ↑', no_credits:'Sin créditos. Mejora tu plan para continuar.' },
-  fr: { nav_home:'Accueil', nav_dashboard:'Tableau de bord', nav_features:'Fonctionnalités', nav_about:'À propos', sign_in:'Se connecter', sign_up:"S'inscrire", sign_out:'Se déconnecter', analyze_btn:'Analyser — Utilise 1 crédit', analyzing:'Analyse en cours…', paste_placeholder:'Collez votre conversation ChatGPT ici...', your_context:'Votre contexte', analysis_results:"Résultats de l'analyse", credits_remaining:'Crédits restants', current_plan:'Plan actuel', upgrade_plan:'Mettre à niveau ↑', no_credits:'Plus de crédits. Mettez à niveau votre plan.' },
-  de: { nav_home:'Startseite', nav_dashboard:'Dashboard', nav_features:'Funktionen', nav_about:'Über uns', sign_in:'Anmelden', sign_up:'Registrieren', sign_out:'Abmelden', analyze_btn:'Analysieren — Verbraucht 1 Guthaben', analyzing:'Wird analysiert…', paste_placeholder:'ChatGPT-Gespräch hier einfügen...', your_context:'Ihr Kontext', analysis_results:'Analyseergebnisse', credits_remaining:'Verbleibende Guthaben', current_plan:'Aktueller Plan', upgrade_plan:'Plan upgraden ↑', no_credits:'Kein Guthaben mehr. Bitte upgraden.' },
-  ro: { nav_home:'Ghar', nav_dashboard:'Dashboard', nav_features:'Features', nav_about:'Bare mein', sign_in:'Sign In karo', sign_up:'Account banao', sign_out:'Sign Out karo', analyze_btn:'Tahleel karo — 1 credit lagega', analyzing:'Tahleel ho raha hai…', paste_placeholder:'ChatGPT conversation yahan paste karo...', your_context:'Tumhara context', analysis_results:'Tahleel ke nataij', credits_remaining:'Baqi credits', current_plan:'Mौjuda plan', upgrade_plan:'Plan upgrade karo ↑', no_credits:'Credits khatam. Plan upgrade karo.' }
+  en: { nav_home:'Home', nav_dashboard:'Dashboard', nav_features:'Features', nav_about:'About', sign_in:'Sign In', sign_up:'Sign Up', sign_out:'Sign Out', analyze_btn:'Analyze — Uses 1 credit', analyzing:'Analyzing…', paste_placeholder:'Type your business question here — Menticx will validate, think, and answer...', your_context:'Your context', analysis_results:'Analysis Results', credits_remaining:'Credits Remaining', current_plan:'Current Plan', upgrade_plan:'Upgrade Plan ↑', no_credits:'You have no credits left. Upgrade your plan to continue.' },
+  ur: { nav_home:'ہوم', nav_dashboard:'ڈیش بورڈ', nav_features:'خصوصیات', nav_about:'بارے میں', sign_in:'سائن ان', sign_up:'سائن اپ', sign_out:'سائن آوٹ', analyze_btn:'تجزیہ کریں — 1 کریڈٹ استعمال ہوگا', analyzing:'تجزیہ ہو رہا ہے…', paste_placeholder:'اپنا کاروباری سوال یہاں ٹائپ کریں...', your_context:'آپ کا سیاق', analysis_results:'تجزیہ کے نتائج', credits_remaining:'باقی کریڈٹ', current_plan:'موجودہ پلان', upgrade_plan:'اپگریڈ کریں ↑', no_credits:'کریڈٹ ختم ہو گئے۔ جاری رکھنے کے لیے پلان اپگریڈ کریں۔' },
+  hi: { nav_home:'होम', nav_dashboard:'डैशबोर्ड', nav_features:'विशेषताएं', nav_about:'के बारे में', sign_in:'साइन इन', sign_up:'साइन अप', sign_out:'साइन आउट', analyze_btn:'विश्लेषण करें — 1 क्रेडिट', analyzing:'विश्लेषण हो रहा है…', paste_placeholder:'अपना व्यवसाय प्रश्न यहाँ टाइप करें...', your_context:'आपका संदर्भ', analysis_results:'विश्लेषण परिणाम', credits_remaining:'शेष क्रेडिट', current_plan:'वर्तमान योजना', upgrade_plan:'अपग्रेड करें ↑', no_credits:'क्रेडिट खत्म। जारी रखने के लिए प्लान अपग्रेड करें।' },
+  ar: { nav_home:'الرئيسية', nav_dashboard:'لوحة التحكم', nav_features:'الميزات', nav_about:'حول', sign_in:'تسجيل الدخول', sign_up:'إنشاء حساب', sign_out:'تسجيل الخروج', analyze_btn:'تحليل — يستخدم رصيداً', analyzing:'جارٍ التحليل…', paste_placeholder:'اكتب سؤالك التجاري هنا...', your_context:'سياقك', analysis_results:'نتائج التحليل', credits_remaining:'الرصيد المتبقي', current_plan:'الخطة الحالية', upgrade_plan:'ترقية الخطة ↑', no_credits:'نفدت رصيدك. قم بترقية خطتك للمتابعة.' },
+  es: { nav_home:'Inicio', nav_dashboard:'Panel', nav_features:'Características', nav_about:'Acerca de', sign_in:'Iniciar sesión', sign_up:'Registrarse', sign_out:'Cerrar sesión', analyze_btn:'Analizar — Usa 1 crédito', analyzing:'Analizando…', paste_placeholder:'Escribe tu pregunta de negocios aquí...', your_context:'Tu contexto', analysis_results:'Resultados del análisis', credits_remaining:'Créditos restantes', current_plan:'Plan actual', upgrade_plan:'Mejorar plan ↑', no_credits:'Sin créditos. Mejora tu plan para continuar.' },
+  fr: { nav_home:'Accueil', nav_dashboard:'Tableau de bord', nav_features:'Fonctionnalités', nav_about:'À propos', sign_in:'Se connecter', sign_up:"S'inscrire", sign_out:'Se déconnecter', analyze_btn:'Analyser — Utilise 1 crédit', analyzing:'Analyse en cours…', paste_placeholder:'Tapez votre question commerciale ici...', your_context:'Votre contexte', analysis_results:"Résultats de l'analyse", credits_remaining:'Crédits restants', current_plan:'Plan actuel', upgrade_plan:'Mettre à niveau ↑', no_credits:'Plus de crédits. Mettez à niveau votre plan.' },
+  de: { nav_home:'Startseite', nav_dashboard:'Dashboard', nav_features:'Funktionen', nav_about:'Über uns', sign_in:'Anmelden', sign_up:'Registrieren', sign_out:'Abmelden', analyze_btn:'Analysieren — Verbraucht 1 Guthaben', analyzing:'Wird analysiert…', paste_placeholder:'Ihre Geschäftsfrage hier eingeben...', your_context:'Ihr Kontext', analysis_results:'Analyseergebnisse', credits_remaining:'Verbleibende Guthaben', current_plan:'Aktueller Plan', upgrade_plan:'Plan upgraden ↑', no_credits:'Kein Guthaben mehr. Bitte upgraden.' },
+  ro: { nav_home:'Ghar', nav_dashboard:'Dashboard', nav_features:'Features', nav_about:'Bare mein', sign_in:'Sign In karo', sign_up:'Account banao', sign_out:'Sign Out karo', analyze_btn:'Tahleel karo — 1 credit lagega', analyzing:'Tahleel ho raha hai…', paste_placeholder:'Apna business sawaal yahan likhein...', your_context:'Tumhara context', analysis_results:'Tahleel ke nataij', credits_remaining:'Baqi credits', current_plan:'Mौjuda plan', upgrade_plan:'Plan upgrade karo ↑', no_credits:'Credits khatam. Plan upgrade karo.' }
 };
 
 function t(key) {
@@ -1770,15 +1699,17 @@ async function analyzeQuestion() {
 
   // Show loading state — hide empty state, reveal output card
   btn.disabled = true;
-  btn.innerHTML = '<span class="spin"></span>Analyzing…';
+  btn.innerHTML = '<span class="spin"></span>🔍 Analyzing your question…';
   safeStyle('analysisEmptyState', 'display', 'none');
   safeStyle('postAnalysis', 'display', 'none');
   output.classList.add('show');
-  content.innerHTML = `
-    <div style="text-align:center;padding:2rem;color:var(--text2);">
-      <div class="spin" style="width:1.5rem;height:1.5rem;border-width:3px;margin:0 auto .875rem;display:block;"></div>
-      <p style="font-size:.875rem;">Analyzing your conversation…</p>
-    </div>`;
+  // Hide both cards, show spinner
+  safeStyle('validationCard', 'display', 'none');
+  safeStyle('answerCard', 'display', 'none');
+  content.insertAdjacentHTML('afterbegin', `<div id="analyzeSpinner" style="text-align:center;padding:2rem;color:var(--text2);">
+    <div class="spin" style="width:1.5rem;height:1.5rem;border-width:3px;margin:0 auto .875rem;display:block;"></div>
+    <p id="analyzeStageMsg" style="font-size:.875rem;">🔍 Analyzing your question…</p>
+  </div>`);
 
   let analysisSucceeded = false;
   let analysisRaw = '';
@@ -1799,10 +1730,26 @@ async function analyzeQuestion() {
     }
 
     const json = await res.json();
-    analysisRaw  = json.content || '';
 
-    // Parse and render the 3 sections
-    renderAnalysis(analysisRaw);
+    // Remove spinner
+    const spinner = document.getElementById('analyzeSpinner');
+    if (spinner) spinner.remove();
+
+    if (json.validation && json.answer) {
+      // New 2-step format
+      const vOut = document.getElementById('validationOutput');
+      const aOut = document.getElementById('answerOutput');
+      if (vOut) vOut.innerHTML = formatMarkdown(json.validation);
+      if (aOut) aOut.innerHTML = formatMarkdown(json.answer);
+      safeStyle('validationCard', 'display', 'block');
+      safeStyle('answerCard', 'display', 'block');
+      analysisRaw = json.validation + '\n\n' + json.answer;
+    } else {
+      // Fallback: legacy single content
+      analysisRaw = json.content || '';
+      renderAnalysis(analysisRaw);
+    }
+
     analysisSucceeded = true;
 
     // Store for follow-up
@@ -1823,6 +1770,8 @@ async function analyzeQuestion() {
     }
 
   } catch (err) {
+    const spinner2 = document.getElementById('analyzeSpinner');
+    if (spinner2) spinner2.remove();
     if (err.message === 'API_KEY_NOT_SET') {
       renderAnalysisMock(question, selectedCtx);
       analysisSucceeded = true;
@@ -1868,7 +1817,7 @@ function renderAnalysisMock(question, ctx) {
     <div style="padding:.75rem 1rem;background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.2);border-radius:.75rem;margin-bottom:1rem;font-size:.82rem;color:#93c5fd;">
       ⚠️ Demo mode — Gemini API key not yet configured on the server
     </div>
-    <div class="analysis-section"><h4>🔍 What did ChatGPT assume?</h4><p>• The user has basic familiarity with the topic<br>• The question is being asked in isolation without prior context<br>• A general-purpose answer is sufficient for all users</p></div>
+    <div class="analysis-section"><h4>🔍 Question Analysis</h4><p>• Your question has been scored and improved for better results<br>• The question is being analyzed with your business context in mind<br>• Menticx is now generating a deep, actionable answer</p></div>
     <div class="analysis-section"><h4>❓ What information is missing?</h4><p>• Your specific background and expertise level<br>• The exact use case or end goal you have in mind<br>• Whether you need a theoretical or practical answer</p></div>
     <div class="analysis-section"><h4>💡 Better answer for a ${ctx} user:</h4><p>As a ${ctx}, you would benefit from a more targeted response that addresses your specific context. The AI's generic answer missed the nuances relevant to your workflow. A better approach would focus on practical application, specific examples from your domain, and actionable next steps tailored to your level of expertise.</p></div>`;
 }
@@ -1877,11 +1826,25 @@ function renderAnalysisMock(question, ctx) {
 function clearOutput() {
   document.getElementById('analysisOutput').classList.remove('show');
   document.getElementById('analysisContent').innerHTML = '';
+  safeStyle('validationCard', 'display', 'none');
+  safeStyle('answerCard', 'display', 'none');
   safeStyle('analysisEmptyState', 'display', 'block');
   safeStyle('postAnalysis', 'display', 'none');
   safeStyle('agentSuggestion', 'display', 'none');
   lastAnalysisQuestion = '';
   lastAnalysisRaw      = '';
+}
+
+// ── Format markdown to HTML ──────────────────────────────────
+function formatMarkdown(text) {
+  if (!text) return '';
+  return text
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/→ Step (\d+)/g, '<br><strong>→ Step $1</strong>')
+    .replace(/^- (.+)$/gm, '<br>• $1')
+    .replace(/^\d+\. (.+)$/gm, (m, p1, offset) => `<br>${m}`)
+    .replace(/\n\n/g, '<br><br>')
+    .replace(/\n/g, '<br>');
 }
 
 // ══════════════════════════════════════════════════════════════
@@ -2853,16 +2816,11 @@ function closeNav() {
 
 // ── Agent definitions ──────────────────────────────────────
 const AGENT_DEFS = {
-  content:   { icon:'📝', name:'Content Writer Agent',   color:'#10A37F' },
-  code:      { icon:'💻', name:'Code Agent',              color:'#3B82F6' },
-  prompt:    { icon:'🎨', name:'Prompt Engineer Agent',   color:'#8B5CF6' },
-  hook:      { icon:'🎣', name:'Hook Builder Agent',      color:'#F59E0B' },
-  translate: { icon:'🌐', name:'Language Bridge Agent',   color:'#06B6D4' },
-  editor:    { icon:'✍️', name:'Editor Agent',            color:'#EC4899' },
-  research:  { icon:'📚', name:'Research Agent',          color:'#10A37F' },
-  marketing: { icon:'🎯', name:'Marketing Agent',         color:'#EF4444' },
-  data:      { icon:'📊', name:'Data Analyst Agent',      color:'#F97316' },
-  tutor:     { icon:'🎓', name:'Tutor Agent',             color:'#3B82F6' },
+  whatsapp:      { icon:'📱', name:'WhatsApp Reply Agent',      color:'#25D366' },
+  supplier:      { icon:'🤝', name:'Supplier Negotiator Agent', color:'#A855F7' },
+  valuedefender: { icon:'💪', name:'Value Defender Agent',      color:'#3B82F6' },
+  review:        { icon:'⭐', name:'Review Request Agent',      color:'#EAB308' },
+  complaint:     { icon:'😤', name:'Complaint Handler Agent',   color:'#EF4444' },
 };
 
 let activeAgentId = null;
@@ -2877,36 +2835,28 @@ function agentFormHTML(id) {
     `<div><label class="field-label">${label}</label><textarea class="agent-ta" id="af-${key}" placeholder="${ph}" rows="${rows}"></textarea></div>`;
 
   switch (id) {
-    case 'content':
-      return inp('Topic','What is your content about?','topic')
-           + sel('Platform','platform',['Blog','Twitter / X','LinkedIn','Instagram'])
-           + sel('Tone','tone',['Professional','Entertaining','Persuasive','Informative','Casual'])
-           + sel('Length','length',['Short (~300 words)','Medium (~600 words)','Long (~1200 words)']);
-    case 'code':
-      return sel('Programming Language','language',['Python','JavaScript','TypeScript','Java','C++','Go','Rust','PHP','Swift','Kotlin','SQL','Bash'])
-           + ta('Task Description','Describe what you want the code to do…','task',4);
-    case 'prompt':
-      return ta('What do you want to create?','Describe the image or text you want to generate with AI…','description',4);
-    case 'hook':
-      return inp('Topic','What is your content about?','topic')
-           + sel('Platform','platform',['TikTok','YouTube','Instagram','LinkedIn','Blog','Twitter / X']);
-    case 'translate':
-      return ta('Text to Translate','Paste the text you want translated…','text',4)
-           + sel('From Language','sourceLang',['Auto-detect','English','Urdu','Hindi','Arabic','Spanish','French','German','Roman Urdu','Chinese','Japanese','Korean','Portuguese','Russian'])
-           + sel('To Language','targetLang',['English','Urdu','Hindi','Arabic','Spanish','French','German','Roman Urdu','Chinese','Japanese','Korean','Portuguese','Russian']);
-    case 'editor':
-      return ta('Text to Edit','Paste your text here…','text',5)
-           + sel('Editing Style','style',['Professional','Friendly','Formal','Casual','Academic','Persuasive']);
-    case 'research':
-      return inp('Research Topic','What do you want researched?','topic');
-    case 'marketing':
-      return inp('Product / Service','What are you marketing?','product')
-           + inp('Target Audience','Who is your ideal customer?','audience');
-    case 'data':
-      return ta('Data Description','Describe your data or paste a summary/CSV snippet…','data',5);
-    case 'tutor':
-      return inp('Topic to Learn','What subject or concept?','topic')
-           + sel('Learner Level','level',['Child (6–10)','Teen (11–17)','Adult','University Student','Professional']);
+    case 'whatsapp':
+      return inp('Product Name','e.g. Nike Running Shoes','product')
+           + inp('Price','e.g. $45','price')
+           + sel('Stock Status','stock',['In Stock','Out of Stock','Limited Stock'])
+           + inp('Delivery Area','e.g. New York, US','area')
+           + inp('Estimated Delivery Days','e.g. 3-5 days','days');
+    case 'supplier':
+      return inp('Product Needed','What product are you buying?','product')
+           + inp('Quantity','e.g. 500 units','quantity')
+           + inp('Current Price Offered','e.g. $12 per unit','currentPrice')
+           + inp('Your Target Price','e.g. $8 per unit','targetPrice');
+    case 'valuedefender':
+      return inp('Your Product / Service','What are you selling?','product')
+           + ta("Customer's Exact Objection","e.g. I found the same thing cheaper at...",'objection',3)
+           + ta('Your Unique Advantages','What makes you better or different?','advantages',3);
+    case 'review':
+      return inp('Customer Name','e.g. Ahmed','name')
+           + inp('What They Purchased','e.g. Blue Wireless Headphones','product')
+           + sel('Their Experience','experience',['Excellent','Good','Average']);
+    case 'complaint':
+      return inp('Your Business Type','e.g. Online clothing store','business')
+           + ta('Customer Complaint','Paste or describe the complaint…','complaint',4);
     default:
       return '<p style="color:var(--text2);font-size:.875rem;">Unknown agent.</p>';
   }
@@ -2919,27 +2869,23 @@ function collectAgentInputs(id) {
     return el ? el.value.trim() : '';
   };
   switch (id) {
-    case 'content':   return { topic: val('topic'), platform: val('platform'), tone: val('tone'), length: val('length') };
-    case 'code':      return { language: val('language'), task: val('task') };
-    case 'prompt':    return { description: val('description') };
-    case 'hook':      return { topic: val('topic'), platform: val('platform') };
-    case 'translate': return { text: val('text'), sourceLang: val('sourceLang'), targetLang: val('targetLang') };
-    case 'editor':    return { text: val('text'), style: val('style') };
-    case 'research':  return { topic: val('topic') };
-    case 'marketing': return { product: val('product'), audience: val('audience') };
-    case 'data':      return { data: val('data') };
-    case 'tutor':     return { topic: val('topic'), level: val('level') };
-    default:          return {};
+    case 'whatsapp':      return { product: val('product'), price: val('price'), stock: val('stock'), area: val('area'), days: val('days') };
+    case 'supplier':      return { product: val('product'), quantity: val('quantity'), currentPrice: val('currentPrice'), targetPrice: val('targetPrice') };
+    case 'valuedefender': return { product: val('product'), objection: val('objection'), advantages: val('advantages') };
+    case 'review':        return { name: val('name'), product: val('product'), experience: val('experience') };
+    case 'complaint':     return { business: val('business'), complaint: val('complaint') };
+    default:              return {};
   }
 }
 
 // ── Validate required fields ────────────────────────────────
 function validateAgentInputs(id, inputs) {
   const required = {
-    content: ['topic'], code: ['task'], prompt: ['description'],
-    hook: ['topic'], translate: ['text'], editor: ['text'],
-    research: ['topic'], marketing: ['product','audience'],
-    data: ['data'], tutor: ['topic']
+    whatsapp:      ['product','price','area'],
+    supplier:      ['product','quantity','currentPrice','targetPrice'],
+    valuedefender: ['product','objection'],
+    review:        ['name','product'],
+    complaint:     ['business','complaint'],
   };
   const fields = required[id] || [];
   return fields.every(f => inputs[f] && inputs[f].length >= 2);

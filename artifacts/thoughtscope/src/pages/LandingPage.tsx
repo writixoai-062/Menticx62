@@ -60,15 +60,15 @@ const features = [
 
 /* ─── FAQ data ─── */
 const faqs = [
-  { q: "What is ThoughtScope?", a: "ThoughtScope is an AI conversation intelligence platform. Paste any ChatGPT conversation and our system reveals the underlying reasoning, biases, and patterns — plus recommends the best specialized agent for your follow-up work." },
-  { q: "How many agents are there?", a: "ThoughtScope includes 10 specialized agents: Content Agent, Code Agent, Prompt Engineer, Hook Writer, Language Bridge, Summary Agent, Research Agent, Debug Agent, SEO Agent, and the Boss Agent that automatically routes you to the right one." },
+  { q: "What is Menticx?", a: "Menticx is an AI conversation intelligence platform. Paste any ChatGPT conversation and our system reveals the underlying reasoning, biases, and patterns — plus recommends the best specialized agent for your follow-up work." },
+  { q: "How many agents are there?", a: "Menticx includes 5 smart business agents: WhatsApp Reply, Supplier Negotiator, Value Defender, Review Request, and Complaint Handler — all focused on helping small businesses grow." },
   { q: "Can I cancel anytime?", a: "Absolutely. No long-term contracts, no cancellation fees, no hidden terms. Cancel with one click from your account settings — your access continues until the end of your billing period." },
   { q: "Is my data safe?", a: "Yes. We operate on a strict zero-retention policy. Your conversations are analyzed in-memory and never written to disk. We do not train on your data. Your privacy is non-negotiable." },
 ];
 
 /* ─── Reviews data ─── */
 const reviews = [
-  { text: "Finally I understand why AI gives certain answers. I was spending hours guessing what prompted a bad response — ThoughtScope shows me the exact reasoning chain in seconds.", name: "Sarah M.", title: "Content Creator", initials: "SM", color: "from-violet-500 to-purple-600" },
+  { text: "Finally I understand why AI gives certain answers. I was spending hours guessing what prompted a bad response — Menticx shows me the exact reasoning chain in seconds.", name: "Sarah M.", title: "Content Creator", initials: "SM", color: "from-violet-500 to-purple-600" },
   { text: "The Boss Agent is a game changer for my freelance workflow. It figures out exactly which specialized agent I need without me having to guess. My output quality doubled.", name: "Ali K.", title: "Freelancer & Consultant", initials: "AK", color: "from-teal-500 to-green-600" },
   { text: "Saved me hours of prompt testing every week. Instead of trial and error, I now see exactly why a prompt worked or failed and fix it immediately.", name: "Maya R.", title: "Senior Developer", initials: "MR", color: "from-blue-500 to-indigo-600" },
 ];
@@ -244,7 +244,7 @@ export default function LandingPage() {
             <div className="w-8 h-8 rounded-lg gradient-bg flex items-center justify-center shadow-sm">
               <Search className="w-4 h-4 text-white" />
             </div>
-            <span className="font-bold text-lg tracking-tight">ThoughtScope</span>
+            <span className="font-bold text-lg tracking-tight">Menticx</span>
           </a>
 
           {/* Center nav — desktop */}
@@ -306,7 +306,7 @@ export default function LandingPage() {
                   <div className="w-8 h-8 rounded-lg gradient-bg flex items-center justify-center">
                     <Search className="w-4 h-4 text-white" />
                   </div>
-                  <span className="font-bold text-lg">ThoughtScope</span>
+                  <span className="font-bold text-lg">Menticx</span>
                 </div>
                 <nav className="flex flex-col gap-1">
                   {navLinks.map((l) => (
@@ -431,7 +431,7 @@ export default function LandingPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
               <div className="hidden md:block absolute top-8 left-1/3 right-1/3 h-0.5 bg-gradient-to-r from-[#10A37F] to-[#3B82F6] opacity-30" />
               {[
-                { icon: FileText, label: "Paste your ChatGPT link", desc: "Copy your ChatGPT conversation URL or paste the full text directly into ThoughtScope." },
+                { icon: FileText, label: "Paste your ChatGPT link", desc: "Copy your ChatGPT conversation URL or paste the full text directly into Menticx." },
                 { icon: Brain, label: "AI analyzes everything", desc: "Our system dissects the question, the answer, and the full reasoning chain behind every response." },
                 { icon: Search, label: "Get insights + agent match", desc: "Receive a full analysis report and automatic recommendation for the best specialized agent." },
               ].map((step, i) => (
@@ -536,7 +536,7 @@ export default function LandingPage() {
         <section ref={ctaIn.ref} className="py-24 px-4 sm:px-6 lg:px-8 bg-card/50">
           <div className={`max-w-3xl mx-auto text-center transition-all duration-700 ${ctaIn.inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">Ready to understand AI better?</h2>
-            <p className="text-muted-foreground text-lg mb-8">Join thousands of researchers, creators, and developers who trust ThoughtScope.</p>
+            <p className="text-muted-foreground text-lg mb-8">Join thousands of researchers, creators, and developers who trust Menticx.</p>
             {showWaitingList && (
               <button
                 data-testid="button-cta-waitlist"
@@ -555,7 +555,7 @@ export default function LandingPage() {
           <div className="max-w-2xl mx-auto">
             <div className={`text-center mb-12 transition-all duration-700 ${faqIn.inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
               <h2 className="text-3xl sm:text-4xl font-bold mb-4">Frequently asked questions</h2>
-              <p className="text-muted-foreground">Everything you need to know about ThoughtScope.</p>
+              <p className="text-muted-foreground">Everything you need to know about Menticx.</p>
             </div>
             <div className={`space-y-3 transition-all duration-700 delay-100 ${faqIn.inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
               {faqs.map((f) => <AccordionItem key={f.q} q={f.q} a={f.a} />)}
@@ -568,7 +568,7 @@ export default function LandingPage() {
           <div className="max-w-5xl mx-auto">
             <div className={`text-center mb-16 transition-all duration-700 ${reviewsIn.inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
               <h2 className="text-3xl sm:text-4xl font-bold mb-4">Loved by researchers and creators</h2>
-              <p className="text-muted-foreground text-lg">Join thousands already using ThoughtScope to unlock AI transparency.</p>
+              <p className="text-muted-foreground text-lg">Join thousands already using Menticx to unlock AI transparency.</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {reviews.map((r, i) => (
@@ -624,7 +624,7 @@ export default function LandingPage() {
                 <div className="w-7 h-7 rounded-lg gradient-bg flex items-center justify-center">
                   <Search className="w-3.5 h-3.5 text-white" />
                 </div>
-                <span className="font-bold text-base">ThoughtScope</span>
+                <span className="font-bold text-base">Menticx</span>
               </div>
               <p className="text-sm text-muted-foreground mb-5 leading-relaxed max-w-xs">
                 Unveiling the cognitive architecture behind AI — one conversation at a time.
@@ -656,7 +656,7 @@ export default function LandingPage() {
             </div>
           </div>
           <div className="pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
-            <span>© 2026 ThoughtScope. All rights reserved.</span>
+            <span>© 2026 Menticx. All rights reserved.</span>
             <div className="flex gap-5">
               <a href="#" className="hover:text-foreground transition-colors">Privacy Policy</a>
               <a href="#" className="hover:text-foreground transition-colors">Terms of Service</a>

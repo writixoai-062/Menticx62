@@ -1,0 +1,398 @@
+# Menticx — Complete Replit Prompt (Final Version)
+# Copy everything below the line and paste into Replit AI
+
+---
+
+I need you to make ALL of the following changes to my Menticx project carefully and completely. Do not skip any step.
+
+---
+
+## CHANGE 1: Fix Name — Replace "ThoughtScope" with "Menticx" everywhere
+
+In `artifacts/thoughtscope/index.html`:
+- Replace every occurrence of "ThoughtScope" with "Menticx"
+- Update browser tab title to: `Menticx — Ask Better. Think Deeper. Decide Smarter.`
+- Update main headline on landing page to: `Ask Better. Think Deeper. Decide Smarter.`
+- Update landing page subtitle to: `Menticx validates your question, shows you how AI thinks, then gives you a deep answer — built for small businesses.`
+
+---
+
+## CHANGE 2: Remove Templates Section Completely
+
+In `artifacts/thoughtscope/index.html`, delete ALL of the following:
+
+1. The entire `<section id="templatesSection">` HTML block — delete completely
+2. The entire sidebar templates collapsible section (the `sb-section` div that contains `id="sbTemplates"`) — delete completely
+3. All CSS for: `.tpl-grid`, `.tpl-card`, `.tpl-btn`, `.sidebar-tpl-btn` — delete all
+4. All JavaScript functions: `navTemplatesClick()`, `hideTemplates()`, `useTemplate()` — delete all
+5. The "📚 Template" button in the main input area — delete it
+6. Any commented-out template nav buttons — delete those comment lines too
+
+---
+
+## CHANGE 3: Update "How to Use" in Sidebar
+
+In `artifacts/thoughtscope/index.html`, find the `id="sbHowTo"` section and replace its content with:
+
+```html
+<div id="sbHowTo" style="padding:0 .875rem .25rem;">
+  <div class="sb-step"><span>1️⃣</span><span>Type your business question</span></div>
+  <div class="sb-step"><span>2️⃣</span><span>Menticx validates & improves your question</span></div>
+  <div class="sb-step"><span>3️⃣</span><span>See exactly how AI is thinking</span></div>
+  <div class="sb-step"><span>4️⃣</span><span>Get a deep, actionable answer</span></div>
+  <div class="sb-step"><span>🤖</span><span>Use Agents for specific business tasks</span></div>
+</div>
+```
+
+---
+
+## CHANGE 4: Update Core Feature Flow (Most Important)
+
+### In `artifacts/api-server/src/routes/analyze.ts`:
+
+Replace the entire `/analyze` endpoint with this new version that makes TWO Gemini calls in sequence:
+
+```typescript
+router.post("/analyze", async (req: Request, res: Response) => {
+  const apiKey = process.env.GEMINI_API_KEY;
+  if (!apiKey) {
+    res.status(503).json({ error: "GEMINI_API_KEY not configured on the server." });
+    return;
+  }
+
+  const { question, context, language } = req.body as {
+    question?: string;
+    context?: string;
+    language?: string;
+  };
+
+  if (!question || typeof question !== "string" || question.trim().length < 5) {
+    res.status(400).json({ error: "question must be a non-empty string." });
+    return;
+  }
+
+  const ctx = typeof context === "string" && context.trim() ? context.trim() : "Small Business Owner";
+  const lang = typeof language === "string" && language.trim() ? language.trim() : "English";
+  const langNote = lang === "English" ? "" : `\n\nIMPORTANT: Respond entirely in ${lang}.`;
+
+  try {
+    const genAI = new GoogleGenerativeAI(apiKey);
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+
+    // STEP 1: Validate and improve the question
+    const validationPrompt = `You are an expert question analyst helping a ${ctx}.
+
+The user asked: "${question.trim()}"
+
+Analyze this question and respond in exactly this format:
+
+**Question Score:** [X/10]
+
+**What's unclear or missing:**
+- [point 1]
+- [point 2]
+
+**Improved Question:**
+[Rewrite their question to be more specific and useful for a ${ctx}]
+
+**Why this version is better:**
+[One sentence explanation]` + langNote;
+
+    const validationResult = await model.generateContent(validationPrompt);
+    const validation = validationResult.response.text();
+
+    // Extract improved question from validation
+    const improvedMatch = validation.match(/\*\*Improved Question:\*\*\s*([\s\S]*?)\n\n/);
+    const improvedQuestion = improvedMatch ? improvedMatch[1].trim() : question.trim();
+
+    // STEP 2: Deep answer with thinking process
+    const answerPrompt = `You are a senior business consultant with 20 years experience helping small businesses.
+
+Original question: "${question.trim()}"
+Refined question: "${improvedQuestion}"
+User type: ${ctx}
+
+Provide a deep structured answer in exactly this format:
+
+**Direct Answer:**
+[Clear, direct answer in 2-3 sentences]
+
+**How I'm Thinking About This:**
+→ Step 1 — Assumptions I'm making: [what context I'm assuming]
+→ Step 2 — Key factors I'm considering: [what matters most here]
+→ Step 3 — My reasoning: [how I'm working through this]
+→ Step 4 — What I'm prioritizing: [why I chose this approach]
+
+**Detailed Answer:**
+[Comprehensive practical advice with specific examples]
+
+**Your Action Steps:**
+1. [Specific action — do this first]
+2. [Specific action — do this second]
+3. [Specific action — do this third]
+
+**Watch Out For:**
+- [Common mistake 1]
+- [Common mistake 2]` + langNote;
+
+    const answerResult = await model.generateContent(answerPrompt);
+    const answer = answerResult.response.text();
+
+    res.json({ validation, answer });
+
+  } catch (err) {
+    const message = err instanceof Error ? err.message : "Unknown error";
+    res.status(502).json({ error: "Gemini API error", details: message });
+  }
+});
+```
+
+### In `artifacts/thoughtscope/index.html`:
+
+Update the results display area to show TWO cards after submit:
+
+**Card 1 — Question Analysis** (show first, green left border):
+```html
+<div style="border-left: 3px solid #10A37F; padding: 1rem; background: rgba(16,163,127,0.05); border-radius: 0 .75rem .75rem 0; margin-bottom: 1rem;">
+  <h4 style="font-size:.85rem;font-weight:700;color:#10A37F;margin-bottom:.5rem;">🔍 Question Analysis</h4>
+  <div id="validationOutput"></div>
+</div>
+```
+
+**Card 2 — Deep Answer** (show second, blue left border):
+```html
+<div style="border-left: 3px solid #3B82F6; padding: 1rem; background: rgba(59,130,246,0.05); border-radius: 0 .75rem .75rem 0;">
+  <h4 style="font-size:.85rem;font-weight:700;color:#3B82F6;margin-bottom:.5rem;">💡 Deep Answer + AI Thinking</h4>
+  <div id="answerOutput"></div>
+</div>
+```
+
+Update loading messages to show 3 stages:
+- Stage 1: "🔍 Analyzing your question..."
+- Stage 2: "🧠 Building deep answer..."
+
+Update the JavaScript that handles the analyze response to populate both `validationOutput` and `answerOutput` from `data.validation` and `data.answer`.
+
+---
+
+## CHANGE 5: Replace ALL 10 Agents with 5 Small Business Agents
+
+### In `artifacts/api-server/src/routes/agent.ts`:
+
+Delete the entire `buildPrompt` switch statement and replace with these 5 agents only:
+
+```typescript
+function buildPrompt(agentId: string, inputs: Record<string, string>, lang: string): string {
+  const lNote = lang && lang !== "English"
+    ? `\n\nIMPORTANT: Your entire response must be in ${lang}.`
+    : "";
+
+  switch (agentId) {
+
+    case "whatsapp":
+      return (
+        `You are a friendly small business WhatsApp assistant. Write a fast, professional WhatsApp reply.\n\n` +
+        `Product: ${inputs.product}\n` +
+        `Price: ${inputs.price}\n` +
+        `Stock available: ${inputs.stock}\n` +
+        `Delivery area: ${inputs.area}\n` +
+        `Estimated delivery days: ${inputs.days}\n\n` +
+        `Write a warm, friendly WhatsApp reply that:\n` +
+        `- Answers clearly and quickly\n` +
+        `- Sounds like a real helpful shop owner, not a robot\n` +
+        `- Includes price, stock status, and delivery info naturally\n` +
+        `- Ends with an invitation to order or ask more\n` +
+        `- Uses 1-2 appropriate emojis\n` +
+        `Keep it short — max 5-6 lines.` + lNote
+      );
+
+    case "complaint":
+      return (
+        `You are an expert customer relationship manager for a small business.\n\n` +
+        `Business type: ${inputs.business}\n` +
+        `Customer complaint: ${inputs.complaint}\n\n` +
+        `Write a professional customer reply that:\n` +
+        `- Opens with genuine empathy and calms the customer immediately\n` +
+        `- Uses 1-2 smile emojis naturally to keep tone warm 😊\n` +
+        `- Acknowledges the issue without making excuses\n` +
+        `- Offers a clear solution or next step\n` +
+        `- Ends in a way that strengthens the relationship\n` +
+        `- Sounds human and caring, never corporate or cold\n` +
+        `Keep it sincere and concise.` + lNote
+      );
+
+    case "review":
+      return (
+        `You are a customer relationship expert. Write a natural review request message.\n\n` +
+        `Customer name: ${inputs.name}\n` +
+        `What they bought: ${inputs.product}\n` +
+        `Their experience: ${inputs.experience}\n\n` +
+        `Write a warm, personal message asking for a review that:\n` +
+        `- Feels genuine and personal, not copy-paste\n` +
+        `- References their specific purchase naturally\n` +
+        `- Makes leaving a review feel easy and appreciated\n` +
+        `- Does NOT beg or pressure\n` +
+        `- Includes where to leave the review (Google/Facebook)\n` +
+        `- Is short enough to read in 10 seconds\n` +
+        `The customer should WANT to leave a review after reading this.` + lNote
+      );
+
+    case "valuedefender":
+      return (
+        `You are a persuasive sales expert helping a small business owner respond to a price objection.\n\n` +
+        `Our product/service: ${inputs.product}\n` +
+        `Customer objection: ${inputs.objection}\n` +
+        `Our unique advantages: ${inputs.advantages}\n\n` +
+        `Write a confident, value-focused reply that:\n` +
+        `- Acknowledges their concern without being defensive\n` +
+        `- Highlights real value and difference — not just price\n` +
+        `- Uses 1-2 specific reasons why we are worth it\n` +
+        `- Keeps the customer engaged and interested\n` +
+        `- Does NOT desperately chase or pressure them\n` +
+        `- Ends with a soft next step that keeps conversation open\n` +
+        `Tone: confident, friendly, professional. Not pushy.` + lNote
+      );
+
+    case "supplier":
+      return (
+        `You are a B2B negotiation expert with 20 years experience in supplier negotiations.\n\n` +
+        `Product needed: ${inputs.product}\n` +
+        `Quantity: ${inputs.quantity}\n` +
+        `Current price offered: ${inputs.currentPrice}\n` +
+        `Target price: ${inputs.targetPrice}\n\n` +
+        `Write a professional negotiation message that:\n` +
+        `- Opens by establishing a partnership mindset, not just haggling\n` +
+        `- Uses volume/loyalty as leverage professionally\n` +
+        `- Makes a specific counter-offer with clear reasoning\n` +
+        `- Anticipates supplier pushback and addresses it proactively\n` +
+        `- Shows you are serious buyer worth long-term relationship\n` +
+        `- Ends with clear call to action\n\n` +
+        `Also provide:\n` +
+        `**Key negotiation points to mention in follow-up:**\n` +
+        `[3 bullet points]\n\n` +
+        `**If supplier says price is fixed:**\n` +
+        `[What to say next]` + lNote
+      );
+
+    default:
+      return `Help with: ${JSON.stringify(inputs)}${lNote}`;
+  }
+}
+```
+
+### In `artifacts/thoughtscope/index.html`:
+
+Find the agents section (around line 840 — `<!-- 10 Agents Section -->`) and replace ALL 10 agent cards with these 5 cards:
+
+```html
+<!-- Agent 1: WhatsApp Reply -->
+<div class="agent-card card2" onclick="openAgent('whatsapp')">
+  <div class="agent-icon-box" style="background:rgba(37,211,102,0.12);">📱</div>
+  <div>
+    <div style="font-size:.875rem;font-weight:700;color:var(--text);">WhatsApp Reply</div>
+    <div style="font-size:.75rem;color:var(--text2);margin-top:.2rem;">Fast, friendly customer replies</div>
+  </div>
+  <button class="agent-use-btn">Use Agent →</button>
+</div>
+
+<!-- Agent 2: Supplier Negotiator -->
+<div class="agent-card card2" onclick="openAgent('supplier')">
+  <div class="agent-icon-box" style="background:rgba(168,85,247,0.12);">🤝</div>
+  <div>
+    <div style="font-size:.875rem;font-weight:700;color:var(--text);">Supplier Negotiator</div>
+    <div style="font-size:.75rem;color:var(--text2);margin-top:.2rem;">Get better deals from suppliers</div>
+  </div>
+  <button class="agent-use-btn">Use Agent →</button>
+</div>
+
+<!-- Agent 3: Value Defender -->
+<div class="agent-card card2" onclick="openAgent('valuedefender')">
+  <div class="agent-icon-box" style="background:rgba(59,130,246,0.12);">💪</div>
+  <div>
+    <div style="font-size:.875rem;font-weight:700;color:var(--text);">Value Defender</div>
+    <div style="font-size:.75rem;color:var(--text2);margin-top:.2rem;">Handle "it's cheaper elsewhere"</div>
+  </div>
+  <button class="agent-use-btn">Use Agent →</button>
+</div>
+
+<!-- Agent 4: Review Request -->
+<div class="agent-card card2" onclick="openAgent('review')">
+  <div class="agent-icon-box" style="background:rgba(234,179,8,0.12);">⭐</div>
+  <div>
+    <div style="font-size:.875rem;font-weight:700;color:var(--text);">Review Request</div>
+    <div style="font-size:.75rem;color:var(--text2);margin-top:.2rem;">Get more 5-star reviews naturally</div>
+  </div>
+  <button class="agent-use-btn">Use Agent →</button>
+</div>
+
+<!-- Agent 5: Complaint Handler -->
+<div class="agent-card card2" onclick="openAgent('complaint')">
+  <div class="agent-icon-box" style="background:rgba(239,68,68,0.12);">😤</div>
+  <div>
+    <div style="font-size:.875rem;font-weight:700;color:var(--text);">Complaint Handler</div>
+    <div style="font-size:.75rem;color:var(--text2);margin-top:.2rem;">Turn angry customers into loyal ones</div>
+  </div>
+  <button class="agent-use-btn">Use Agent →</button>
+</div>
+```
+
+### Update Agent Modal Forms:
+
+For each agent, update the `openAgent()` function modal inputs:
+
+**whatsapp** inputs: product name, price, stock (In Stock / Out of Stock), delivery area, delivery days
+
+**complaint** inputs: business type, customer complaint (textarea)
+
+**review** inputs: customer name, what they purchased, their experience (Good / Excellent / Average)
+
+**valuedefender** inputs: your product/service, customer's exact objection, your unique advantages
+
+**supplier** inputs: product needed, quantity, current price offered, your target price
+
+### Update Sidebar Agents Section:
+
+Find `id="sbAgents"` in the sidebar and replace its content with:
+
+```html
+<div id="sbAgents" style="padding:0 .5rem .25rem;">
+  <button onclick="openAgent('whatsapp')" class="sidebar-agent-btn">📱<div><span>WhatsApp Reply</span><small>Fast customer replies</small></div></button>
+  <button onclick="openAgent('supplier')" class="sidebar-agent-btn">🤝<div><span>Supplier Negotiator</span><small>Better deals, more profit</small></div></button>
+  <button onclick="openAgent('valuedefender')" class="sidebar-agent-btn">💪<div><span>Value Defender</span><small>Handle price objections</small></div></button>
+  <button onclick="openAgent('review')" class="sidebar-agent-btn">⭐<div><span>Review Request</span><small>Get 5-star reviews</small></div></button>
+  <button onclick="openAgent('complaint')" class="sidebar-agent-btn">😤<div><span>Complaint Handler</span><small>Calm angry customers</small></div></button>
+</div>
+```
+
+Also update the agents count from `(10)` to `(5)` in the sidebar header.
+
+---
+
+## CHANGE 6: Update Landing Page Features Section
+
+In `artifacts/thoughtscope/index.html`, find `<section id="features"` and update:
+
+1. The "How it works" steps to:
+   - Step 1: "Type your business question"
+   - Step 2: "Menticx validates & improves your question"
+   - Step 3: "See AI thinking process live"
+   - Step 4: "Get deep, actionable answer"
+
+2. Replace "All 10 agents" text with "5 Smart Business Agents"
+
+3. Update any feature descriptions to focus on small businesses
+
+---
+
+---
+
+## CHANGE 8: Remove "ChatGPT" references from UI
+
+In `artifacts/thoughtscope/index.html`:
+- Find the placeholder text that says "Paste ChatGPT link or your question + ChatGPT's answer here..."
+- Replace with: "Type your business question here — Menticx will validate, think, and answer..."
+- Remove any visible UI text that says "ChatGPT" (keep it only in backend prompts where needed for logic)
+
+---
+
+Please make ALL 8 changes. After completing, confirm which files were changed.
