@@ -1,0 +1,66 @@
+# Menticx — Fix Dashboard Layout
+# Paste into Replit AI
+
+The dashboard still has a 2-column layout inside dash-main. I need to fix this.
+
+## What needs to change:
+
+In `artifacts/thoughtscope/index.html`, find the main content area inside `id="dashView"` after the sidebar.
+
+### Step 1 — Find the 2-column wrapper
+
+Look for a div inside `dash-main` that has `display:flex` or `display:grid` creating two columns:
+- Left column: the input card (tabs + textarea + buttons)  
+- Right column: "Ready to analyze" / results panel
+
+This wrapper div likely looks like:
+```html
+<div style="display:flex;gap:..."> 
+  <div>...input card...</div>
+  <div>...right panel...</div>
+</div>
+```
+
+### Step 2 — Remove the 2-column split completely
+
+Change the layout so everything is in ONE column stacked vertically:
+
+1. Remove the flex wrapper around both columns
+2. The input card should take FULL WIDTH of dash-main
+3. The results/empty state panel should appear DIRECTLY BELOW the input card
+4. Wrap everything in a single centered container:
+```html
+<div style="max-width:820px;margin:0 auto;width:100%;padding:1.5rem;">
+  <!-- input card here -->
+  <!-- results below here -->
+</div>
+```
+
+### Step 3 — Remove the 2 tabs above the textarea
+
+Currently there are two tabs above the textarea: "🔍 Analyze AI" and "💡 Ask Anything"
+
+REMOVE both tabs and the tab bar completely. Just show the textarea directly — no tabs needed.
+
+Keep only the "Analyze AI" mode content (the textarea + context buttons + analyze button). Remove the entire "Ask Anything" / adaptive mode tab and its content.
+
+### Step 4 — Make textarea bigger and full width
+
+Update the textarea:
+- `width: 100%`
+- `min-height: 180px`
+- Remove any max-width constraints
+
+### Step 5 — Remove the small header above textarea
+
+Currently there is a small header with icon that says "ASK YOUR BUSINESS QUESTION" and "Menticx validates, thinks, and gives you a deep answer" above the textarea.
+
+Remove this header — the textarea placeholder text is enough.
+
+### Step 6 — Results appear below
+
+After the analyze button, the results (Question Analysis card + Deep Answer card) should appear below in the same full-width column — not in a separate right panel.
+
+Make sure `id="analysisEmptyState"` and `id="analysisOutput"` are inside the same centered column, directly below the input card.
+
+Please make all these layout changes and confirm what was updated.

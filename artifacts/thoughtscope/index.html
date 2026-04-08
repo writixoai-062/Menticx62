@@ -84,7 +84,7 @@
     .inp-inline { flex:1;padding:.72rem 1rem;background:var(--inp-bg);border:1px solid var(--border);border-radius:.75rem;color:var(--text);outline:none;font-size:.875rem;font-family:inherit;transition:border-color .2s,box-shadow .2s;min-width:0; }
     .inp-inline::placeholder { color:var(--text2); }
     .inp-inline:focus { border-color:var(--btn); }
-    .textarea-field { width:100%;padding:.875rem 1rem;background:var(--inp-bg);border:1px solid var(--border);border-radius:.875rem;color:var(--text);outline:none;font-size:.875rem;font-family:inherit;resize:vertical;min-height:160px;transition:border-color .2s,box-shadow .2s;line-height:1.6; }
+    .textarea-field { width:100%;padding:.875rem 1rem;background:var(--inp-bg);border:1px solid var(--border);border-radius:.875rem;color:var(--text);outline:none;font-size:.875rem;font-family:inherit;resize:vertical;min-height:180px;transition:border-color .2s,box-shadow .2s;line-height:1.6; }
     .textarea-field::placeholder { color:var(--text2); }
     .textarea-field:focus { border-color:var(--btn);box-shadow:0 0 0 3px rgba(16,163,127,.1); }
 
@@ -586,6 +586,7 @@
 
   <!-- ══════════ MAIN AREA ══════════ -->
   <div class="dash-main">
+  <div style="max-width:820px;margin:0 auto;width:100%;">
 
     <!-- Welcome strip -->
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;">
@@ -621,95 +622,35 @@
       </div>
     </div>
 
-    <!-- ── Tabbed tool card ── -->
-    <div class="card" style="padding:0;overflow:hidden;margin-bottom:1rem;">
-
-      <!-- Mode tab bar -->
-      <div style="display:flex;border-bottom:1px solid var(--border);">
-        <button id="tabAnalyze"  class="mode-tab active" onclick="switchMode('analyze')">🔍 Analyze AI</button>
-        <button id="tabAdaptive" class="mode-tab"        onclick="switchMode('adaptive')">💡 Ask Anything</button>
-      </div>
-
-      <!-- ─── MODE 1: Ask your business question ─── -->
-      <div id="modeAnalyze" style="padding:1.5rem;">
-        <div style="display:flex;align-items:center;gap:.625rem;margin-bottom:1.125rem;">
-          <div class="g-bg" style="width:34px;height:34px;border-radius:.625rem;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0;">🧠</div>
-          <div>
-            <h3 style="font-weight:800;font-size:.95rem;color:var(--text);letter-spacing:.02em;">ASK YOUR BUSINESS QUESTION</h3>
-            <p style="font-size:.78rem;color:var(--text2);">Menticx validates, thinks, and gives you a deep answer</p>
-          </div>
-        </div>
-        <textarea id="analysisInput" class="textarea-field" placeholder="Type your business question here — Menticx will validate, think, and answer..." style="margin-bottom:1rem;" oninput="onInputChange();showSquare('how-ai-works');"></textarea>
-        <div style="margin-bottom:1rem;">
-          <p style="font-size:.78rem;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.5rem;">What describes you best?</p>
-          <div style="display:flex;flex-wrap:wrap;gap:.5rem;">
-            <button class="ctx-tab active" data-ctx="Shop Owner"       onclick="setCtx(this)">🏪 Shop Owner</button>
-            <button class="ctx-tab"        data-ctx="Service Business" onclick="setCtx(this)">🔧 Service Business</button>
-            <button class="ctx-tab"        data-ctx="Online Seller"    onclick="setCtx(this)">📦 Online Seller</button>
-            <button class="ctx-tab"        data-ctx="Freelancer"       onclick="setCtx(this)">💻 Freelancer</button>
-            <button class="ctx-tab"        data-ctx="Startup"          onclick="setCtx(this)">🚀 Startup</button>
-            </div>
-          </div>
-          <div id="bossAgent" class="card2" style="padding:.75rem 1rem;margin-bottom:1rem;background:rgba(16,163,127,.06);border-color:rgba(16,163,127,.2);">
-            <p style="font-size:.82rem;color:var(--text2);">🤖 Boss Agent recommends: <strong id="bossRec" style="color:#10A37F;"></strong></p>
-          </div>
-          <button id="analyzeBtn" onclick="analyzeQuestion();showSquare('how-mentics-works');" class="btn-p" style="width:100%;padding:.8rem;border-radius:.875rem;font-size:.9rem;" disabled>
-            Analyze →
-          </button>
-        </div>
-
-        <!-- ─── MODE 2: Adaptive Q&A ─── -->
-        <div id="modeAdaptive" style="padding:1.5rem;display:none;">
-
-          <!-- Step indicator -->
-          <div class="adpt-steps">
-            <div id="adotS1" class="adpt-step-dot active">1</div>
-            <div class="adpt-step-line"></div>
-            <div id="adotS2" class="adpt-step-dot todo">2</div>
-            <div class="adpt-step-line"></div>
-            <div id="adotS3" class="adpt-step-dot todo">3</div>
-          </div>
-
-          <!-- Step 1: Question input -->
-          <div id="adaptStep1">
-            <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.875rem;">
-              <div class="g-bg" style="width:28px;height:28px;border-radius:.5rem;display:flex;align-items:center;justify-content:center;font-size:.8rem;flex-shrink:0;">💡</div>
-              <div>
-                <p style="font-size:.82rem;font-weight:700;color:var(--text);">Ask Anything</p>
-                <p style="font-size:.74rem;color:var(--text2);">Business · Career · Tech · Health · Finance · Learning</p>
-              </div>
-            </div>
-            <textarea id="adaptInput" class="textarea-field" placeholder="Ask anything... e.g. How to start a profitable online business with $500?" style="margin-bottom:.875rem;min-height:100px;" oninput="onAdaptInputChange();showSquare('how-ai-works');"></textarea>
-            <button id="adaptContinueBtn" onclick="generateQuestions();showSquare('how-mentics-works');" class="btn-p" style="width:100%;padding:.8rem;border-radius:.875rem;font-size:.875rem;" disabled>
-              Continue — Personalize my answer →
-            </button>
-          </div>
-
-          <!-- Step 2: Clarifying questions -->
-          <div id="adaptStep2" style="display:none;">
-            <div id="adaptCategoryBadge" style="display:flex;align-items:center;gap:.375rem;margin-bottom:.875rem;">
-              <span id="adaptCategoryEmoji" style="font-size:1.1rem;"></span>
-              <span id="adaptCategoryName" style="font-size:.8rem;font-weight:700;color:var(--btn);"></span>
-              <button onclick="resetAdaptive()" style="margin-left:auto;font-size:.75rem;color:var(--text2);background:transparent;border:none;cursor:pointer;text-decoration:underline;">← Change question</button>
-            </div>
-            <div id="adaptQuestionsArea"></div>
-            <div style="display:flex;gap:.5rem;margin-top:.875rem;flex-wrap:wrap;">
-              <button id="adaptAnswerBtn" onclick="getUniqueAnswer()" class="btn-p" style="flex:1;min-width:120px;padding:.65rem;border-radius:.875rem;font-size:.8rem;">
-                📝 Unique Answer
-              </button>
-              <button id="adaptDeepBtn" onclick="getDeepAnalysis()" class="btn-o" style="flex:1;min-width:120px;padding:.65rem;border-radius:.875rem;font-size:.8rem;">
-                📊 Deep Analysis
-              </button>
-              <button id="adaptCompareBtn" onclick="getComparison()" class="btn-o" style="flex:1;min-width:120px;padding:.65rem;border-radius:.875rem;font-size:.8rem;">
-                ⚖️ Compare Options
-              </button>
-            </div>
-            <p style="font-size:.73rem;color:var(--text2);margin-top:.5rem;text-align:center;">Answer questions above for your best result</p>
-          </div>
-
+    <!-- ── Input card ── -->
+    <div class="card" style="padding:1.5rem;margin-bottom:1rem;">
+      <textarea id="analysisInput" class="textarea-field" placeholder="Type your business question here — Menticx will validate, think, and answer..." style="margin-bottom:1rem;width:100%;" oninput="onInputChange();"></textarea>
+      <div style="margin-bottom:1rem;">
+        <p style="font-size:.78rem;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.5rem;">What describes you best?</p>
+        <div style="display:flex;flex-wrap:wrap;gap:.5rem;">
+          <button class="ctx-tab active" data-ctx="Shop Owner"       onclick="setCtx(this)">🏪 Shop Owner</button>
+          <button class="ctx-tab"        data-ctx="Service Business" onclick="setCtx(this)">🔧 Service Business</button>
+          <button class="ctx-tab"        data-ctx="Online Seller"    onclick="setCtx(this)">📦 Online Seller</button>
+          <button class="ctx-tab"        data-ctx="Freelancer"       onclick="setCtx(this)">💻 Freelancer</button>
+          <button class="ctx-tab"        data-ctx="Startup"          onclick="setCtx(this)">🚀 Startup</button>
         </div>
       </div>
+      <div id="bossAgent" class="card2" style="display:none;padding:.75rem 1rem;margin-bottom:1rem;background:rgba(16,163,127,.06);border-color:rgba(16,163,127,.2);">
+        <p style="font-size:.82rem;color:var(--text2);">🤖 Best agent for your question: <strong id="bossRec" style="color:#10A37F;"></strong></p>
+      </div>
+      <button id="analyzeBtn" onclick="analyzeQuestion();" class="btn-p" style="width:100%;padding:.85rem;border-radius:.875rem;font-size:.95rem;font-weight:700;" disabled>
+        Analyze →
+      </button>
     </div>
+
+    <!-- Hidden adaptive placeholders (keep for JS compatibility) -->
+    <div id="adaptInput" style="display:none;"></div>
+    <div id="adaptStep1" style="display:none;"></div>
+    <div id="adaptStep2" style="display:none;"></div>
+    <div id="adaptContinueBtn" style="display:none;"></div>
+    <div id="adaptAnswerBtn" style="display:none;"></div>
+    <div id="adaptDeepBtn" style="display:none;"></div>
+    <div id="adaptCompareBtn" style="display:none;"></div>
 
     <!-- ── Output sections ── -->
 
@@ -806,6 +747,7 @@
       </div>
     </div>
 
+  </div><!-- /content wrapper -->
   </div><!-- /dash-main -->
 </div><!-- /2-col flex -->
 
