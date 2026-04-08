@@ -383,7 +383,7 @@
       <div class="g-bg" style="width:36px;height:36px;border-radius:.75rem;display:flex;align-items:center;justify-content:center;font-size:1.2rem;line-height:1;">🧠</div>
       <div>
         <div style="font-weight:900;font-size:1.05rem;color:var(--text);line-height:1.1;letter-spacing:-.01em;">MENTICX</div>
-        <div style="font-size:.65rem;font-weight:500;color:var(--text2);letter-spacing:.06em;text-transform:uppercase;line-height:1;">deep research</div>
+        <div style="font-size:.65rem;font-weight:500;color:var(--text2);letter-spacing:.06em;text-transform:uppercase;line-height:1;">AI That Thinks First</div>
       </div>
     </a>
 
@@ -499,7 +499,7 @@
       <div class="g-bg" style="width:32px;height:32px;border-radius:.625rem;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;">🧠</div>
       <div>
         <p style="font-size:.9rem;font-weight:900;color:var(--text);letter-spacing:.02em;line-height:1;">MENTICX</p>
-        <p style="font-size:.62rem;color:var(--btn);font-weight:600;letter-spacing:.05em;text-transform:uppercase;">Deep Research</p>
+        <p style="font-size:.62rem;color:var(--btn);font-weight:600;letter-spacing:.05em;text-transform:uppercase;">AI That Thinks First</p>
       </div>
     </div>
 
@@ -568,16 +568,6 @@
     <!-- Bottom: Credits + Profile -->
     <div style="border-top:1px solid var(--border);">
 
-      <!-- Credits bar -->
-      <div style="padding:.625rem .875rem .375rem;">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.25rem;">
-          <p style="font-size:.67rem;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:.06em;">Credits</p>
-          <span style="font-size:.8rem;font-weight:800;color:var(--text);"><span id="dashCredits">5</span><span style="color:var(--text2);font-weight:400;font-size:.72rem;">/<span id="dashMaxCreds">5</span></span></span>
-        </div>
-        <div class="credit-bar"><div id="creditFill" class="credit-fill g-bg" style="width:100%;"></div></div>
-        <p style="font-size:.67rem;color:var(--text2);margin-top:.2rem;">Resets monthly</p>
-      </div>
-
       <!-- Profile row -->
       <div style="padding:.375rem .875rem .75rem;">
         <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.45rem;">
@@ -588,7 +578,6 @@
           </div>
           <button onclick="handleSignOut()" title="Sign out" style="background:transparent;border:none;cursor:pointer;font-size:.85rem;color:var(--text2);padding:.2rem;" title="Sign out">↪</button>
         </div>
-        <button onclick="showLanding();setTimeout(()=>document.getElementById('pricing')?.scrollIntoView({behavior:'smooth'}),100)" class="btn-p" style="width:100%;border-radius:.75rem;padding:.5rem;font-size:.77rem;border:none;cursor:pointer;font-weight:700;">⬆️ Upgrade Plan</button>
       </div>
 
     </div>
@@ -652,7 +641,7 @@
         </div>
         <textarea id="analysisInput" class="textarea-field" placeholder="Type your business question here — Menticx will validate, think, and answer..." style="margin-bottom:1rem;" oninput="onInputChange();showSquare('how-ai-works');"></textarea>
         <div style="margin-bottom:1rem;">
-          <p style="font-size:.78rem;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.5rem;">Your context</p>
+          <p style="font-size:.78rem;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.5rem;">What describes you best?</p>
           <div style="display:flex;flex-wrap:wrap;gap:.5rem;">
             <button class="ctx-tab active" data-ctx="Shop Owner"       onclick="setCtx(this)">🏪 Shop Owner</button>
             <button class="ctx-tab"        data-ctx="Service Business" onclick="setCtx(this)">🔧 Service Business</button>
@@ -665,7 +654,7 @@
             <p style="font-size:.82rem;color:var(--text2);">🤖 Boss Agent recommends: <strong id="bossRec" style="color:#10A37F;"></strong></p>
           </div>
           <button id="analyzeBtn" onclick="analyzeQuestion();showSquare('how-mentics-works');" class="btn-p" style="width:100%;padding:.8rem;border-radius:.875rem;font-size:.9rem;" disabled>
-            Analyze — Uses 1 credit
+            Analyze →
           </button>
         </div>
 
@@ -715,7 +704,7 @@
                 ⚖️ Compare Options
               </button>
             </div>
-            <p style="font-size:.73rem;color:var(--text2);margin-top:.5rem;text-align:center;">Each action uses 1 credit — answer questions above for best results</p>
+            <p style="font-size:.73rem;color:var(--text2);margin-top:.5rem;text-align:center;">Answer questions above for your best result</p>
           </div>
 
         </div>
@@ -825,7 +814,7 @@
   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;">
     <div>
       <h3 style="font-size:1.05rem;font-weight:800;color:var(--text);margin-bottom:.2rem;">🤖 Business AI Agents</h3>
-      <p style="font-size:.8rem;color:var(--text2);">5 smart business agents — each uses 1 credit</p>
+      <p style="font-size:.8rem;color:var(--text2);">5 Smart Business Agents</p>
     </div>
     <span style="font-size:.75rem;color:var(--text2);background:rgba(16,163,127,.08);border:1px solid rgba(16,163,127,.15);padding:.25rem .75rem;border-radius:9999px;">✨ Powered by Gemini</span>
   </div>
@@ -1004,7 +993,7 @@
     <div class="agent-modal-ftr">
       <button onclick="closeFollowUp()" class="btn-g" style="font-size:.85rem;padding:.65rem 1.25rem;">Cancel</button>
       <button id="followUpSubmitBtn" onclick="submitFollowUp()" class="btn-p" style="font-size:.85rem;padding:.65rem 1.375rem;">
-        Ask — 1 credit
+        Ask →
       </button>
     </div>
   </div>
@@ -1062,7 +1051,6 @@
       <div class="card fu d2" style="padding:1.5rem;"><div class="g-bg" style="width:38px;height:38px;border-radius:.625rem;display:flex;align-items:center;justify-content:center;margin-bottom:.875rem;font-size:1.1rem;">🧠</div><h3 style="font-weight:700;color:var(--text);margin-bottom:.375rem;font-size:.95rem;">AI Thinking Process</h3><p style="font-size:.875rem;color:var(--text2);line-height:1.65;">See step-by-step how AI reasons through your question — assumptions, factors, logic, and priorities.</p></div>
       <div class="card fu d3" style="padding:1.5rem;"><div class="g-bg" style="width:38px;height:38px;border-radius:.625rem;display:flex;align-items:center;justify-content:center;margin-bottom:.875rem;font-size:1.1rem;">⚡</div><h3 style="font-weight:700;color:var(--text);margin-bottom:.375rem;font-size:.95rem;">5 Smart Business Agents</h3><p style="font-size:.875rem;color:var(--text2);line-height:1.65;">WhatsApp replies, supplier deals, price objections, review requests, complaint handling — all in one click.</p></div>
       <div class="card fu d4" style="padding:1.5rem;"><div class="g-bg" style="width:38px;height:38px;border-radius:.625rem;display:flex;align-items:center;justify-content:center;margin-bottom:.875rem;font-size:1.1rem;">🌍</div><h3 style="font-weight:700;color:var(--text);margin-bottom:.375rem;font-size:.95rem;">Multi-Language</h3><p style="font-size:.875rem;color:var(--text2);line-height:1.65;">Full support for English, Urdu, Hindi, Arabic, and 20+ additional languages.</p></div>
-      <div class="card fu d5" style="padding:1.5rem;"><div class="g-bg" style="width:38px;height:38px;border-radius:.625rem;display:flex;align-items:center;justify-content:center;margin-bottom:.875rem;font-size:1.1rem;">💳</div><h3 style="font-weight:700;color:var(--text);margin-bottom:.375rem;font-size:.95rem;">Smart Credits</h3><p style="font-size:.875rem;color:var(--text2);line-height:1.65;">Free 5 credits/month, Pro 100, Business unlimited — scales precisely with your needs.</p></div>
       <div class="card fu d6" style="padding:1.5rem;"><div class="g-bg" style="width:38px;height:38px;border-radius:.625rem;display:flex;align-items:center;justify-content:center;margin-bottom:.875rem;font-size:1.1rem;">🔒</div><h3 style="font-weight:700;color:var(--text);margin-bottom:.375rem;font-size:.95rem;">Privacy First</h3><p style="font-size:.875rem;color:var(--text2);line-height:1.65;">Zero-retention policy. Your data is never stored, logged, or sold. Period.</p></div>
     </div>
   </div>
@@ -1111,7 +1099,7 @@
         <p style="font-size:.85rem;color:var(--text2);margin-bottom:.875rem;">Perfect to get started</p>
         <div style="margin-bottom:1.375rem;"><span style="font-size:2.4rem;font-weight:900;color:var(--text);">$0</span><span style="color:var(--text2);">/mo</span></div>
         <ul style="list-style:none;padding:0;margin:0 0 1.75rem;display:flex;flex-direction:column;gap:.625rem;flex:1;">
-          <li style="display:flex;align-items:center;gap:.5rem;font-size:.875rem;color:var(--text2);">✅ 5 credits/month</li>
+          <li style="display:flex;align-items:center;gap:.5rem;font-size:.875rem;color:var(--text2);">✅ Unlimited questions</li>
           <li style="display:flex;align-items:center;gap:.5rem;font-size:.875rem;color:var(--text2);">✅ 2 specialized agents</li>
           <li style="display:flex;align-items:center;gap:.5rem;font-size:.875rem;color:var(--text2);">✅ Basic AI analysis</li>
           <li style="display:flex;align-items:center;gap:.5rem;font-size:.875rem;color:var(--text2);">✅ Email support</li>
@@ -1125,7 +1113,7 @@
         <p style="font-size:.85rem;color:var(--text2);margin-bottom:.875rem;">For serious researchers</p>
         <div style="margin-bottom:1.375rem;"><span style="font-size:2.4rem;font-weight:900;color:var(--text);">$9.99</span><span style="color:var(--text2);">/mo</span></div>
         <ul style="list-style:none;padding:0;margin:0 0 1.75rem;display:flex;flex-direction:column;gap:.625rem;flex:1;">
-          <li style="display:flex;align-items:center;gap:.5rem;font-size:.875rem;color:var(--text);">✅ 100 credits/month</li>
+          <li style="display:flex;align-items:center;gap:.5rem;font-size:.875rem;color:var(--text);">✅ Unlimited questions</li>
           <li style="display:flex;align-items:center;gap:.5rem;font-size:.875rem;color:var(--text);">✅ All 10 agents</li>
           <li style="display:flex;align-items:center;gap:.5rem;font-size:.875rem;color:var(--text);">✅ Deep AI analysis</li>
           <li style="display:flex;align-items:center;gap:.5rem;font-size:.875rem;color:var(--text);">✅ Priority support</li>
@@ -1139,7 +1127,7 @@
         <p style="font-size:.85rem;color:var(--text2);margin-bottom:.875rem;">For teams and enterprises</p>
         <div style="margin-bottom:1.375rem;"><span style="font-size:2.4rem;font-weight:900;color:var(--text);">$29.99</span><span style="color:var(--text2);">/mo</span></div>
         <ul style="list-style:none;padding:0;margin:0 0 1.75rem;display:flex;flex-direction:column;gap:.625rem;flex:1;">
-          <li style="display:flex;align-items:center;gap:.5rem;font-size:.875rem;color:var(--text2);">✅ Unlimited credits</li>
+          <li style="display:flex;align-items:center;gap:.5rem;font-size:.875rem;color:var(--text2);">✅ Unlimited questions</li>
           <li style="display:flex;align-items:center;gap:.5rem;font-size:.875rem;color:var(--text2);">✅ All Pro features</li>
           <li style="display:flex;align-items:center;gap:.5rem;font-size:.875rem;color:var(--text2);">✅ API access</li>
           <li style="display:flex;align-items:center;gap:.5rem;font-size:.875rem;color:var(--text2);">✅ Team collaboration</li>
@@ -1204,7 +1192,7 @@
       <div>
         <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.75rem;">
           <div class="g-bg" style="width:26px;height:26px;border-radius:.5rem;display:flex;align-items:center;justify-content:center;font-size:.8rem;">🧠</div>
-          <div><div style="font-weight:900;font-size:.9rem;color:var(--text);line-height:1.1;">MENTICX</div><div style="font-size:.6rem;color:var(--text2);letter-spacing:.06em;text-transform:uppercase;">deep research</div></div>
+          <div><div style="font-weight:900;font-size:.9rem;color:var(--text);line-height:1.1;">MENTICX</div><div style="font-size:.6rem;color:var(--text2);letter-spacing:.06em;text-transform:uppercase;">AI That Thinks First</div></div>
         </div>
         <p style="font-size:.82rem;color:var(--text2);line-height:1.65;max-width:190px;margin-bottom:1rem;">Unveiling the cognitive architecture behind AI — one conversation at a time.</p>
         <div style="display:flex;gap:.75rem;">
@@ -1250,7 +1238,7 @@
         <span id="agentModalIcon" style="font-size:1.6rem;"></span>
         <div>
           <h3 id="agentModalTitle" style="font-size:1rem;font-weight:800;color:var(--text);line-height:1.2;"></h3>
-          <p style="font-size:.75rem;color:var(--text2);margin-top:.15rem;">Uses 1 credit per run</p>
+          <p style="font-size:.75rem;color:var(--text2);margin-top:.15rem;">Free to use</p>
         </div>
       </div>
       <button onclick="_closeAgentModal()" style="background:transparent;border:none;cursor:pointer;font-size:1.2rem;color:var(--text2);padding:.25rem;border-radius:.5rem;line-height:1;" aria-label="Close">✕</button>
@@ -1265,7 +1253,7 @@
     <!-- Footer with run button -->
     <div class="agent-modal-ftr">
       <button id="agentRunBtn" onclick="runAgent()" class="btn-p" style="width:100%;padding:.8rem;border-radius:.875rem;font-size:.9rem;">
-        Run Agent — 1 credit
+        Run Agent →
       </button>
     </div>
 
@@ -1289,7 +1277,6 @@ const { createClient } = window.supabase;
 const sb = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 let currentUser = null;
-let currentCredits = 5;
 let selectedCtx = 'Shop Owner';
 let lastAnalysisQuestion = '';
 let lastAnalysisRaw      = '';
@@ -1301,14 +1288,14 @@ let currentLangName = localStorage.getItem('mn-lang-name') || 'English';
 
 // ── i18n strings ────────────────────────────────────────────
 const I18N = {
-  en: { nav_home:'Home', nav_dashboard:'Dashboard', nav_features:'Features', nav_about:'About', sign_in:'Sign In', sign_up:'Sign Up', sign_out:'Sign Out', analyze_btn:'Analyze — Uses 1 credit', analyzing:'Analyzing…', paste_placeholder:'Type your business question here — Menticx will validate, think, and answer...', your_context:'Your context', analysis_results:'Analysis Results', credits_remaining:'Credits Remaining', current_plan:'Current Plan', upgrade_plan:'Upgrade Plan ↑', no_credits:'You have no credits left. Upgrade your plan to continue.' },
-  ur: { nav_home:'ہوم', nav_dashboard:'ڈیش بورڈ', nav_features:'خصوصیات', nav_about:'بارے میں', sign_in:'سائن ان', sign_up:'سائن اپ', sign_out:'سائن آوٹ', analyze_btn:'تجزیہ کریں — 1 کریڈٹ استعمال ہوگا', analyzing:'تجزیہ ہو رہا ہے…', paste_placeholder:'اپنا کاروباری سوال یہاں ٹائپ کریں...', your_context:'آپ کا سیاق', analysis_results:'تجزیہ کے نتائج', credits_remaining:'باقی کریڈٹ', current_plan:'موجودہ پلان', upgrade_plan:'اپگریڈ کریں ↑', no_credits:'کریڈٹ ختم ہو گئے۔ جاری رکھنے کے لیے پلان اپگریڈ کریں۔' },
-  hi: { nav_home:'होम', nav_dashboard:'डैशबोर्ड', nav_features:'विशेषताएं', nav_about:'के बारे में', sign_in:'साइन इन', sign_up:'साइन अप', sign_out:'साइन आउट', analyze_btn:'विश्लेषण करें — 1 क्रेडिट', analyzing:'विश्लेषण हो रहा है…', paste_placeholder:'अपना व्यवसाय प्रश्न यहाँ टाइप करें...', your_context:'आपका संदर्भ', analysis_results:'विश्लेषण परिणाम', credits_remaining:'शेष क्रेडिट', current_plan:'वर्तमान योजना', upgrade_plan:'अपग्रेड करें ↑', no_credits:'क्रेडिट खत्म। जारी रखने के लिए प्लान अपग्रेड करें।' },
-  ar: { nav_home:'الرئيسية', nav_dashboard:'لوحة التحكم', nav_features:'الميزات', nav_about:'حول', sign_in:'تسجيل الدخول', sign_up:'إنشاء حساب', sign_out:'تسجيل الخروج', analyze_btn:'تحليل — يستخدم رصيداً', analyzing:'جارٍ التحليل…', paste_placeholder:'اكتب سؤالك التجاري هنا...', your_context:'سياقك', analysis_results:'نتائج التحليل', credits_remaining:'الرصيد المتبقي', current_plan:'الخطة الحالية', upgrade_plan:'ترقية الخطة ↑', no_credits:'نفدت رصيدك. قم بترقية خطتك للمتابعة.' },
-  es: { nav_home:'Inicio', nav_dashboard:'Panel', nav_features:'Características', nav_about:'Acerca de', sign_in:'Iniciar sesión', sign_up:'Registrarse', sign_out:'Cerrar sesión', analyze_btn:'Analizar — Usa 1 crédito', analyzing:'Analizando…', paste_placeholder:'Escribe tu pregunta de negocios aquí...', your_context:'Tu contexto', analysis_results:'Resultados del análisis', credits_remaining:'Créditos restantes', current_plan:'Plan actual', upgrade_plan:'Mejorar plan ↑', no_credits:'Sin créditos. Mejora tu plan para continuar.' },
-  fr: { nav_home:'Accueil', nav_dashboard:'Tableau de bord', nav_features:'Fonctionnalités', nav_about:'À propos', sign_in:'Se connecter', sign_up:"S'inscrire", sign_out:'Se déconnecter', analyze_btn:'Analyser — Utilise 1 crédit', analyzing:'Analyse en cours…', paste_placeholder:'Tapez votre question commerciale ici...', your_context:'Votre contexte', analysis_results:"Résultats de l'analyse", credits_remaining:'Crédits restants', current_plan:'Plan actuel', upgrade_plan:'Mettre à niveau ↑', no_credits:'Plus de crédits. Mettez à niveau votre plan.' },
-  de: { nav_home:'Startseite', nav_dashboard:'Dashboard', nav_features:'Funktionen', nav_about:'Über uns', sign_in:'Anmelden', sign_up:'Registrieren', sign_out:'Abmelden', analyze_btn:'Analysieren — Verbraucht 1 Guthaben', analyzing:'Wird analysiert…', paste_placeholder:'Ihre Geschäftsfrage hier eingeben...', your_context:'Ihr Kontext', analysis_results:'Analyseergebnisse', credits_remaining:'Verbleibende Guthaben', current_plan:'Aktueller Plan', upgrade_plan:'Plan upgraden ↑', no_credits:'Kein Guthaben mehr. Bitte upgraden.' },
-  ro: { nav_home:'Ghar', nav_dashboard:'Dashboard', nav_features:'Features', nav_about:'Bare mein', sign_in:'Sign In karo', sign_up:'Account banao', sign_out:'Sign Out karo', analyze_btn:'Tahleel karo — 1 credit lagega', analyzing:'Tahleel ho raha hai…', paste_placeholder:'Apna business sawaal yahan likhein...', your_context:'Tumhara context', analysis_results:'Tahleel ke nataij', credits_remaining:'Baqi credits', current_plan:'Mौjuda plan', upgrade_plan:'Plan upgrade karo ↑', no_credits:'Credits khatam. Plan upgrade karo.' }
+  en: { nav_home:'Home', nav_dashboard:'Dashboard', nav_features:'Features', nav_about:'About', sign_in:'Sign In', sign_up:'Sign Up', sign_out:'Sign Out', analyze_btn:'Analyze →', analyzing:'Analyzing…', paste_placeholder:'Type your business question here — Menticx will validate, think, and answer...', your_context:'What describes you best?', analysis_results:'Analysis Results', current_plan:'Current Plan' },
+  ur: { nav_home:'ہوم', nav_dashboard:'ڈیش بورڈ', nav_features:'خصوصیات', nav_about:'بارے میں', sign_in:'سائن ان', sign_up:'سائن اپ', sign_out:'سائن آوٹ', analyze_btn:'تجزیہ کریں →', analyzing:'تجزیہ ہو رہا ہے…', paste_placeholder:'اپنا کاروباری سوال یہاں ٹائپ کریں...', your_context:'آپ کو کیا بیان کرتا ہے؟', analysis_results:'تجزیہ کے نتائج', current_plan:'موجودہ پلان' },
+  hi: { nav_home:'होम', nav_dashboard:'डैशबोर्ड', nav_features:'विशेषताएं', nav_about:'के बारे में', sign_in:'साइन इन', sign_up:'साइन अप', sign_out:'साइन आउट', analyze_btn:'विश्लेषण करें →', analyzing:'विश्लेषण हो रहा है…', paste_placeholder:'अपना व्यवसाय प्रश्न यहाँ टाइप करें...', your_context:'आपको सबसे अच्छा क्या बताता है?', analysis_results:'विश्लेषण परिणाम', current_plan:'वर्तमान योजना' },
+  ar: { nav_home:'الرئيسية', nav_dashboard:'لوحة التحكم', nav_features:'الميزات', nav_about:'حول', sign_in:'تسجيل الدخول', sign_up:'إنشاء حساب', sign_out:'تسجيل الخروج', analyze_btn:'تحليل →', analyzing:'جارٍ التحليل…', paste_placeholder:'اكتب سؤالك التجاري هنا...', your_context:'ما الذي يصفك بشكل أفضل؟', analysis_results:'نتائج التحليل', current_plan:'الخطة الحالية' },
+  es: { nav_home:'Inicio', nav_dashboard:'Panel', nav_features:'Características', nav_about:'Acerca de', sign_in:'Iniciar sesión', sign_up:'Registrarse', sign_out:'Cerrar sesión', analyze_btn:'Analizar →', analyzing:'Analizando…', paste_placeholder:'Escribe tu pregunta de negocios aquí...', your_context:'¿Qué te describe mejor?', analysis_results:'Resultados del análisis', current_plan:'Plan actual' },
+  fr: { nav_home:'Accueil', nav_dashboard:'Tableau de bord', nav_features:'Fonctionnalités', nav_about:'À propos', sign_in:'Se connecter', sign_up:"S'inscrire", sign_out:'Se déconnecter', analyze_btn:'Analyser →', analyzing:'Analyse en cours…', paste_placeholder:'Tapez votre question commerciale ici...', your_context:'Qui vous décrit le mieux?', analysis_results:"Résultats de l'analyse", current_plan:'Plan actuel' },
+  de: { nav_home:'Startseite', nav_dashboard:'Dashboard', nav_features:'Funktionen', nav_about:'Über uns', sign_in:'Anmelden', sign_up:'Registrieren', sign_out:'Abmelden', analyze_btn:'Analysieren →', analyzing:'Wird analysiert…', paste_placeholder:'Ihre Geschäftsfrage hier eingeben...', your_context:'Was beschreibt Sie am besten?', analysis_results:'Analyseergebnisse', current_plan:'Aktueller Plan' },
+  ro: { nav_home:'Ghar', nav_dashboard:'Dashboard', nav_features:'Features', nav_about:'Bare mein', sign_in:'Sign In karo', sign_up:'Account banao', sign_out:'Sign Out karo', analyze_btn:'Tahleel karo →', analyzing:'Tahleel ho raha hai…', paste_placeholder:'Apna business sawaal yahan likhein...', your_context:'Aapko kya bayan karta hai?', analysis_results:'Tahleel ke nataij', current_plan:'Mौjuda plan' }
 };
 
 function t(key) {
@@ -1470,7 +1457,7 @@ async function startCheckout(plan) {
             <span style="font-size:1.25rem;">🎉</span>
             <strong style="color:var(--text);font-size:.9rem;">Payment successful!</strong>
           </div>
-          <p style="font-size:.82rem;color:var(--text2);line-height:1.55;">Welcome to your new plan. Your credits have been updated — enjoy Menticx!</p>
+          <p style="font-size:.82rem;color:var(--text2);line-height:1.55;">Welcome to your new plan. All features are now unlocked — enjoy Menticx!</p>
           <button onclick="this.parentElement.parentElement.remove()" style="margin-top:.625rem;font-size:.75rem;color:var(--btn);background:transparent;border:none;cursor:pointer;font-weight:600;">Dismiss ✕</button>
         </div>`;
       document.body.appendChild(banner);
@@ -1625,22 +1612,14 @@ async function populateDash() {
   // Fetch profile
   const { data: profile } = await getProfile(currentUser.id);
   const plan    = profile?.plan    ?? 'free';
-  const credits = profile?.credits ?? 5;
-  const maxCred = { free: 5, pro: 100, business: Infinity }[plan] ?? 5;
-  currentCredits = credits;
 
   const planLabel = plan.charAt(0).toUpperCase() + plan.slice(1) + ' Plan';
   safeText('dashPlanBadge',  planLabel);
   safeText('dashPlanBadge2', planLabel);
-  document.getElementById('dashCredits').textContent   = credits;
-  document.getElementById('dashMaxCreds').textContent  = maxCred === Infinity ? '∞' : maxCred;
-
-  const pct = maxCred === Infinity ? 80 : Math.round((credits / maxCred) * 100);
-  document.getElementById('creditFill').style.width = pct + '%';
 
   // Update analyze button state
   document.getElementById('analyzeBtn').disabled =
-    document.getElementById('analysisInput').value.trim().length < 10 || credits <= 0;
+    document.getElementById('analysisInput').value.trim().length < 10;
 
   // Load recent history into sidebar
   await loadRecentHistory();
@@ -1656,7 +1635,7 @@ function setCtx(btn) {
 // ── Input change handler ────────────────────────────────────
 function onInputChange() {
   const text = document.getElementById('analysisInput').value.trim();
-  document.getElementById('analyzeBtn').disabled = text.length < 10 || currentCredits <= 0;
+  document.getElementById('analyzeBtn').disabled = text.length < 10;
   // Boss Agent detection
   if (text.length > 15) {
     const rec = detectCategory(text);
@@ -1688,7 +1667,7 @@ function detectCategory(text) {
 // ── Main analysis function ──────────────────────────────────
 async function analyzeQuestion() {
   const question = document.getElementById('analysisInput').value.trim();
-  if (!question || currentCredits <= 0) return;
+  if (!question) return;
 
   const btn     = document.getElementById('analyzeBtn');
   const output  = document.getElementById('analysisOutput');
@@ -1753,15 +1732,7 @@ async function analyzeQuestion() {
     lastAnalysisQuestion = question;
     lastAnalysisRaw      = analysisRaw;
 
-    // Deduct 1 credit
-    const newCredits = Math.max(0, currentCredits - 1);
-    currentCredits = newCredits;
-    document.getElementById('dashCredits').textContent = newCredits;
     if (currentUser) {
-      await updateCredits(currentUser.id, newCredits);
-      const maxCred = parseInt(document.getElementById('dashMaxCreds').textContent.replace('/ ', '')) || 5;
-      const pct = isNaN(maxCred) ? 80 : Math.round((newCredits / maxCred) * 100);
-      document.getElementById('creditFill').style.width = pct + '%';
       // Save to history (fire-and-forget — don't block UI)
       saveToHistory(question, analysisRaw, selectedCtx, currentLangName).then(() => loadRecentHistory());
     }
@@ -1785,8 +1756,8 @@ async function analyzeQuestion() {
     showAgentSuggestion(question);
   }
 
-  btn.disabled = currentCredits <= 0;
-  btn.textContent = currentCredits <= 0 ? t('no_credits') : t('analyze_btn');
+  btn.disabled = false;
+  btn.textContent = t('analyze_btn');
 }
 
 // ── Render analysis from API response ──────────────────────
@@ -1992,7 +1963,6 @@ function selectOption(qIdx, oIdx) {
 
 // ── Step 2 → 3: Get Unique Answer ───────────────────────────
 async function getUniqueAnswer() {
-  if (currentCredits <= 0) { alert('No credits left. Upgrade your plan to continue.'); return; }
   const btn = document.getElementById('adaptAnswerBtn');
   btn.disabled = true;
   btn.innerHTML = '<span class="spin"></span>Generating…';
@@ -2037,7 +2007,6 @@ async function getUniqueAnswer() {
 
 // ── Step 2 → 3: Deep Analysis ────────────────────────────────
 async function getDeepAnalysis() {
-  if (currentCredits <= 0) { alert('No credits left. Upgrade your plan to continue.'); return; }
   const btn = document.getElementById('adaptDeepBtn');
   btn.disabled = true;
   btn.innerHTML = '<span class="spin"></span>Generating…';
@@ -2175,17 +2144,9 @@ function renderDeepAnalysis(raw) {
   content.innerHTML = html;
 }
 
-// ── Deduct credit (shared helper for adaptive) ───────────────
+// ── Deduct credit (no-op — tool is now free) ────────────────
 async function deductCredit() {
-  const newCredits = Math.max(0, currentCredits - 1);
-  currentCredits = newCredits;
-  document.getElementById('dashCredits').textContent = newCredits;
-  if (currentUser) {
-    await updateCredits(currentUser.id, newCredits);
-    const maxCred = parseInt(document.getElementById('dashMaxCreds').textContent.replace('/ ','')) || 5;
-    const pct = isNaN(maxCred) ? 80 : Math.round((newCredits / maxCred) * 100);
-    document.getElementById('creditFill').style.width = pct + '%';
-  }
+  // Credits removed — Menticx is fully free
 }
 
 // ── Reset adaptive flow ──────────────────────────────────────
@@ -2297,7 +2258,6 @@ function exportToPDF() {
 
 // ── Comparison Mode ──────────────────────────────────────────
 async function getComparison() {
-  if (currentCredits <= 0) { alert('No credits left. Upgrade your plan to continue.'); return; }
   const btn = document.getElementById('adaptCompareBtn');
   btn.disabled = true;
   btn.innerHTML = '<span class="spin"></span>Comparing…';
@@ -2610,12 +2570,6 @@ function closeFollowUpBg(e) {
 async function submitFollowUp() {
   const q = document.getElementById('followUpInput').value.trim();
   if (!q) return;
-  if (currentCredits <= 0) {
-    const errEl = document.getElementById('followUpErr');
-    errEl.textContent = 'No credits remaining. Upgrade your plan to continue.';
-    errEl.style.display = 'block';
-    return;
-  }
   const submitBtn = document.getElementById('followUpSubmitBtn');
   const errEl     = document.getElementById('followUpErr');
   const resultEl  = document.getElementById('followUpResult');
@@ -2652,24 +2606,13 @@ async function submitFollowUp() {
       .replace(/\n/g, '<br>');
     resultEl.style.display = 'block';
 
-    // Deduct 1 credit
-    const newCredits = Math.max(0, currentCredits - 1);
-    currentCredits = newCredits;
-    document.getElementById('dashCredits').textContent = newCredits;
-    if (currentUser) {
-      await updateCredits(currentUser.id, newCredits);
-      const maxCred = parseInt(document.getElementById('dashMaxCreds').textContent.replace('/ ', '')) || 5;
-      const pct = isNaN(maxCred) ? 80 : Math.round((newCredits / maxCred) * 100);
-      document.getElementById('creditFill').style.width = pct + '%';
-    }
-
   } catch (err) {
     errEl.textContent = '⚠️ ' + err.message;
     errEl.style.display = 'block';
   }
 
   submitBtn.disabled = false;
-  submitBtn.textContent = 'Ask — 1 credit';
+  submitBtn.textContent = 'Ask →';
 }
 
 // ── HTML escape helper ───────────────────────────────────────
@@ -2902,7 +2845,7 @@ function openAgent(id) {
   const errEl = document.getElementById('agentErr');
   if (errEl) errEl.style.display = 'none';
   const runBtn = document.getElementById('agentRunBtn');
-  if (runBtn) { runBtn.disabled = false; runBtn.innerHTML = 'Run Agent — 1 credit'; }
+  if (runBtn) { runBtn.disabled = false; runBtn.innerHTML = 'Run Agent →'; }
   document.getElementById('agentModal').classList.add('show');
   document.body.style.overflow = 'hidden';
 }
@@ -2921,12 +2864,6 @@ function _closeAgentModal() {
 // ── Run agent ───────────────────────────────────────────────
 async function runAgent() {
   if (!activeAgentId || !currentUser) return;
-  if (currentCredits <= 0) {
-    const e = document.getElementById('agentErr');
-    if (e) { e.textContent = t('no_credits'); e.style.display = 'block'; }
-    return;
-  }
-
   const inputs = collectAgentInputs(activeAgentId);
   if (!validateAgentInputs(activeAgentId, inputs)) {
     const e = document.getElementById('agentErr');
@@ -2954,11 +2891,6 @@ async function runAgent() {
 
     if (!resp.ok) throw new Error(data.error || 'Agent error');
 
-    // Deduct credit
-    currentCredits = Math.max(0, currentCredits - 1);
-    await updateCredits(currentUser.id, currentCredits);
-    safeText('dashCredits', currentCredits);
-
     // Render result
     const content = document.getElementById('agentResultContent');
     if (content) content.innerHTML = renderAgentMarkdown(data.content || '');
@@ -2970,7 +2902,7 @@ async function runAgent() {
     const e = document.getElementById('agentErr');
     if (e) { e.textContent = err.message || 'Something went wrong.'; e.style.display = 'block'; }
   } finally {
-    if (btn) { btn.disabled = false; btn.innerHTML = 'Run Agent — 1 credit'; }
+    if (btn) { btn.disabled = false; btn.innerHTML = 'Run Agent →'; }
   }
 }
 

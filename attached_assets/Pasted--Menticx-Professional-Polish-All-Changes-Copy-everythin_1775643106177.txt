@@ -1,0 +1,166 @@
+# Menticx — Professional Polish (All Changes)
+# Copy everything below and paste into Replit AI
+
+---
+
+Make ALL of the following changes to my Menticx project carefully and completely.
+
+---
+
+## CHANGE 1: Remove Credits System Completely — Make It Fully Free
+
+The tool should be 100% free with no credit limits. Remove all credit-related logic and UI.
+
+### In `artifacts/thoughtscope/index.html`:
+
+**Remove from sidebar:**
+- Delete the entire Credits bar section (the div containing `id="dashCredits"`, `id="creditFill"`, `id="dashMaxCreds"`, "Resets monthly" text)
+- Delete the "⬆️ Upgrade Plan" button from the sidebar bottom
+
+**Remove credit checks from JavaScript:**
+- Find `currentCredits` variable and all references — remove them
+- Find where `analyzeBtn` is disabled due to credits (`credits <= 0`) — remove that condition. Button should only be disabled when textarea is empty (less than 10 chars)
+- Find `onInputChange` function — remove `currentCredits <= 0` check
+- Remove any `no_credits` error messages or popups
+
+**Update all button text:**
+- `"Analyze — Uses 1 credit"` → `"Analyze →"`
+- `"Run Agent — 1 credit"` → `"Run Agent →"`
+- `"Ask — 1 credit"` → `"Ask →"`
+- `"Each action uses 1 credit — answer questions above for best results"` → `"Answer questions above for your best result"`
+- `"10 specialized agents — each uses 1 credit"` → `"5 Smart Business Agents"`
+
+**Update i18n strings for ALL languages** (en, ur, hi, ar, es, fr, de, ro):
+- `analyze_btn` → `'Analyze →'` (all languages)
+- Remove `no_credits` entries or set to empty string
+
+**Remove from landing page pricing section:**
+- `"5 credits/month"` → `"Unlimited questions"`
+- `"100 credits/month"` → `"Unlimited questions"`
+- `"Unlimited credits"` → `"Unlimited questions"`
+- Remove "Smart Credits" feature card from features section
+
+---
+
+## CHANGE 2: Fix Branding — Remove "DEEP RESEARCH" Subtitle
+
+In `artifacts/thoughtscope/index.html`:
+
+**In the sidebar logo area**, find:
+```
+MENTICX
+DEEP RESEARCH
+```
+Replace "DEEP RESEARCH" with:
+```
+AI That Thinks First
+```
+
+**In the top navbar logo**, find the same "DEEP RESEARCH" text and replace with:
+```
+AI That Thinks First
+```
+
+---
+
+## CHANGE 3: Remove Context Tabs — Replace With Small Business Options
+
+In `artifacts/thoughtscope/index.html`, find the context buttons section in "Analyze AI" tab:
+
+Remove: Student, Professional, Researcher, Curious, Technical
+
+Replace with:
+```html
+<button class="ctx-tab active" data-ctx="Shop Owner" onclick="setCtx(this)">🏪 Shop Owner</button>
+<button class="ctx-tab" data-ctx="Service Business" onclick="setCtx(this)">🔧 Service Business</button>
+<button class="ctx-tab" data-ctx="Online Seller" onclick="setCtx(this)">📦 Online Seller</button>
+<button class="ctx-tab" data-ctx="Freelancer" onclick="setCtx(this)">💻 Freelancer</button>
+<button class="ctx-tab" data-ctx="Startup" onclick="setCtx(this)">🚀 Startup</button>
+```
+
+Also update the label above context buttons:
+- `"Your context"` → `"What describes you best?"`
+
+---
+
+## CHANGE 4: Dashboard Layout — Full Width, Right Panel Moved Below
+
+In `artifacts/thoughtscope/index.html`:
+
+Find the main content area inside `dash-main`. Currently it has a 2-column flex/grid layout:
+- Left: input card (tabs + textarea + buttons)
+- Right: "Ready to analyze" panel
+
+**Change to single column layout:**
+1. Remove the 2-column wrapper
+2. Input card takes full width
+3. Results/empty state appears directly below input card
+4. Add `max-width: 860px; margin: 0 auto;` to the content wrapper
+5. Make textarea `min-height: 160px`
+
+---
+
+## CHANGE 5: Sidebar — All Sections Collapsed by Default
+
+### Update `toggleSbSection` function:
+```javascript
+function toggleSbSection(id, iconId) {
+  const el = document.getElementById(id);
+  const icon = document.getElementById(iconId);
+  if (!el) return;
+  const isHidden = el.style.display === 'none' || el.style.display === '';
+  el.style.display = isHidden ? 'block' : 'none';
+  if (icon) icon.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
+}
+```
+
+### Set all sidebar content divs to hidden:
+- `<div id="sbHowTo"` → add `style="display:none;"`
+- `<div id="sbAgents"` → add `style="display:none;"`
+- `<div id="sbHistory"` → add `style="display:none;"`
+
+### Update CSS:
+```css
+.sb-section { border-bottom: 1px solid var(--border); }
+.sb-hdr {
+  display:flex;align-items:center;justify-content:space-between;
+  width:100%;background:transparent;border:none;cursor:pointer;font-family:inherit;
+  padding:.6rem .875rem;font-size:.8rem;font-weight:700;color:var(--text);
+  transition:background .15s;text-align:left;letter-spacing:.01em;
+}
+.sb-hdr:hover { background:rgba(128,128,128,.07); }
+```
+
+---
+
+## CHANGE 6: Landing Page Hero — Update Button Text
+
+Find any button or text that says **"Launching Soon"** on the landing page hero section and replace with:
+```
+Try Menticx Free
+```
+
+---
+
+## CHANGE 7: Clean Up Welcome Strip
+
+Replace the current welcome strip at top of dash-main with this minimal version:
+```html
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;">
+  <h2 id="dashWelcomeName" style="font-size:1rem;font-weight:700;color:var(--text);">Hello 👋</h2>
+  <span id="dashPlanBadge2" style="padding:.2rem .65rem;border-radius:9999px;font-size:.7rem;font-weight:700;background:rgba(16,163,127,.12);border:1px solid rgba(16,163,127,.2);color:#6ee7b7;">Free</span>
+</div>
+```
+
+---
+
+## CHANGE 8: Update Features Section on Landing Page
+
+In the features/pricing cards on landing page:
+- Remove "Smart Credits" feature card completely
+- Update free plan to show: `"✅ Unlimited questions"` instead of `"✅ 5 credits/month"`
+- Update pro plan to show: `"✅ Unlimited questions"` instead of `"✅ 100 credits/month"`
+
+---
+
+Please make ALL 8 changes and confirm what was updated.
