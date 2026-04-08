@@ -84,7 +84,7 @@
     .inp-inline { flex:1;padding:.72rem 1rem;background:var(--inp-bg);border:1px solid var(--border);border-radius:.75rem;color:var(--text);outline:none;font-size:.875rem;font-family:inherit;transition:border-color .2s,box-shadow .2s;min-width:0; }
     .inp-inline::placeholder { color:var(--text2); }
     .inp-inline:focus { border-color:var(--btn); }
-    .textarea-field { width:100%;padding:.875rem 1rem;background:var(--inp-bg);border:1px solid var(--border);border-radius:.875rem;color:var(--text);outline:none;font-size:.875rem;font-family:inherit;resize:vertical;min-height:130px;transition:border-color .2s,box-shadow .2s;line-height:1.6; }
+    .textarea-field { width:100%;padding:.875rem 1rem;background:var(--inp-bg);border:1px solid var(--border);border-radius:.875rem;color:var(--text);outline:none;font-size:.875rem;font-family:inherit;resize:vertical;min-height:160px;transition:border-color .2s,box-shadow .2s;line-height:1.6; }
     .textarea-field::placeholder { color:var(--text2); }
     .textarea-field:focus { border-color:var(--btn);box-shadow:0 0 0 3px rgba(16,163,127,.1); }
 
@@ -207,14 +207,14 @@
     .sidebar-tpl-btn:hover { background:rgba(16,163,127,.08);color:var(--text); }
 
     /* Sidebar collapsible sections */
-    .sb-section { }
+    .sb-section { border-bottom:1px solid var(--border); }
     .sb-hdr {
       display:flex;align-items:center;justify-content:space-between;
       width:100%;background:transparent;border:none;cursor:pointer;font-family:inherit;
-      padding:.45rem .875rem;font-size:.78rem;font-weight:700;color:var(--text);
-      transition:background .12s;text-align:left;
+      padding:.6rem .875rem;font-size:.8rem;font-weight:700;color:var(--text);
+      transition:background .15s;text-align:left;letter-spacing:.01em;
     }
-    .sb-hdr:hover { background:rgba(128,128,128,.06); }
+    .sb-hdr:hover { background:rgba(128,128,128,.07); }
     .sb-step {
       display:flex;align-items:center;gap:.45rem;padding:.25rem .45rem;border-radius:.4rem;
       background:rgba(16,163,127,.05);margin-bottom:.2rem;font-size:.72rem;color:var(--text2);
@@ -519,7 +519,7 @@
           <span>📘 How to Use</span>
           <span id="sbHowToIcon" style="transition:transform .2s;">▾</span>
         </button>
-        <div id="sbHowTo" style="padding:0 .875rem .25rem;">
+        <div id="sbHowTo" style="display:none;padding:0 .875rem .25rem;">
           <div class="sb-step"><span>1️⃣</span><span>Type your business question</span></div>
           <div class="sb-step"><span>2️⃣</span><span>Menticx validates & improves your question</span></div>
           <div class="sb-step"><span>3️⃣</span><span>See exactly how AI is thinking</span></div>
@@ -536,7 +536,7 @@
           <span>🤖 Agents <span style="font-size:.65rem;opacity:.6;font-weight:500;">(5)</span></span>
           <span id="sbAgentsIcon" style="transition:transform .2s;">▾</span>
         </button>
-        <div id="sbAgents" style="padding:0 .5rem .25rem;">
+        <div id="sbAgents" style="display:none;padding:0 .5rem .25rem;">
           <button onclick="openAgent('whatsapp')" class="sidebar-agent-btn">📱<div><span>WhatsApp Reply</span><small>Fast customer replies</small></div></button>
           <button onclick="openAgent('supplier')" class="sidebar-agent-btn">🤝<div><span>Supplier Negotiator</span><small>Better deals, more profit</small></div></button>
           <button onclick="openAgent('valuedefender')" class="sidebar-agent-btn">💪<div><span>Value Defender</span><small>Handle price objections</small></div></button>
@@ -556,7 +556,7 @@
             <span id="sbHistoryIcon" style="transition:transform .2s;">▾</span>
           </div>
         </button>
-        <div id="sbHistory" style="padding:0 .5rem .25rem;">
+        <div id="sbHistory" style="display:none;padding:0 .5rem .25rem;">
           <div id="historyList">
             <p style="font-size:.73rem;color:var(--text2);padding:.25rem .375rem;">No history yet.</p>
           </div>
@@ -599,12 +599,9 @@
   <div class="dash-main">
 
     <!-- Welcome strip -->
-    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;margin-bottom:1.25rem;padding-bottom:1rem;border-bottom:1px solid var(--border);">
-      <div>
-        <p style="font-size:.75rem;color:var(--text2);margin-bottom:.1rem;">Welcome back 👋</p>
-        <h2 id="dashWelcomeName" style="font-size:1.1rem;font-weight:800;color:var(--text);">Loading…</h2>
-      </div>
-      <span id="dashPlanBadge2" style="padding:.25rem .75rem;border-radius:9999px;font-size:.72rem;font-weight:700;background:rgba(16,163,127,.12);border:1px solid rgba(16,163,127,.2);color:#6ee7b7;">Free Plan</span>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;">
+      <h2 id="dashWelcomeName" style="font-size:1rem;font-weight:700;color:var(--text);">Hello 👋</h2>
+      <span id="dashPlanBadge2" style="padding:.2rem .65rem;border-radius:9999px;font-size:.7rem;font-weight:700;background:rgba(16,163,127,.12);border:1px solid rgba(16,163,127,.2);color:#6ee7b7;">Free Plan</span>
     </div>
 
     <!-- ── Square 1: HOW AI WORKS (shows when typing) ── -->
@@ -657,11 +654,11 @@
         <div style="margin-bottom:1rem;">
           <p style="font-size:.78rem;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.5rem;">Your context</p>
           <div style="display:flex;flex-wrap:wrap;gap:.5rem;">
-            <button class="ctx-tab active" data-ctx="Student"      onclick="setCtx(this)">🎓 Student</button>
-            <button class="ctx-tab"        data-ctx="Professional" onclick="setCtx(this)">💼 Professional</button>
-            <button class="ctx-tab"        data-ctx="Researcher"   onclick="setCtx(this)">🔬 Researcher</button>
-            <button class="ctx-tab"        data-ctx="Curious"      onclick="setCtx(this)">💡 Curious</button>
-            <button class="ctx-tab"        data-ctx="Technical"    onclick="setCtx(this)">⚙️ Technical</button>
+            <button class="ctx-tab active" data-ctx="Shop Owner"       onclick="setCtx(this)">🏪 Shop Owner</button>
+            <button class="ctx-tab"        data-ctx="Service Business" onclick="setCtx(this)">🔧 Service Business</button>
+            <button class="ctx-tab"        data-ctx="Online Seller"    onclick="setCtx(this)">📦 Online Seller</button>
+            <button class="ctx-tab"        data-ctx="Freelancer"       onclick="setCtx(this)">💻 Freelancer</button>
+            <button class="ctx-tab"        data-ctx="Startup"          onclick="setCtx(this)">🚀 Startup</button>
             </div>
           </div>
           <div id="bossAgent" class="card2" style="padding:.75rem 1rem;margin-bottom:1rem;background:rgba(16,163,127,.06);border-color:rgba(16,163,127,.2);">
@@ -1047,7 +1044,7 @@
       <span style="width:4px;height:4px;border-radius:50%;background:var(--border);display:inline-block;"></span>
       <span>🌍 Global coverage</span>
       <span style="width:4px;height:4px;border-radius:50%;background:var(--border);display:inline-block;"></span>
-      <span>🚀 Launching soon</span>
+      <span>🚀 Try Menticx Free</span>
     </div>
   </div>
 </section>
@@ -1293,7 +1290,7 @@ const sb = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 let currentUser = null;
 let currentCredits = 5;
-let selectedCtx = 'Student';
+let selectedCtx = 'Shop Owner';
 let lastAnalysisQuestion = '';
 let lastAnalysisRaw      = '';
 let suggestedAgentId     = '';
@@ -1380,13 +1377,13 @@ function hideSquare(id) {
 }
 
 // ── Sidebar collapse/expand ───────────────────────────────────
-function toggleSbSection(contentId, iconId) {
-  const el = document.getElementById(contentId);
+function toggleSbSection(id, iconId) {
+  const el = document.getElementById(id);
   const icon = document.getElementById(iconId);
   if (!el) return;
-  const isHidden = el.style.display === 'none';
-  el.style.display = isHidden ? '' : 'none';
-  if (icon) icon.style.transform = isHidden ? '' : 'rotate(-90deg)';
+  const isHidden = el.style.display === 'none' || el.style.display === '';
+  el.style.display = isHidden ? 'block' : 'none';
+  if (icon) icon.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
 }
 
 // ── Sidebar: return to main tool ─────────────────────────────

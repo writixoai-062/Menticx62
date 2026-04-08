@@ -1,0 +1,122 @@
+# Menticx — Dashboard UI Redesign + Sidebar Fix + Hero Text
+# Copy everything below and paste into Replit AI
+
+---
+
+I need three sets of changes to my Menticx project. Please make ALL carefully.
+
+---
+
+## CHANGE 1: Dashboard Layout — Full Width Expand, Right Panel Moved Down
+
+Right now the dashboard has a 2-column layout inside `dash-main` — left side has the input card and right side shows "Ready to analyze". I want to change this:
+
+### What to do:
+
+In `artifacts/thoughtscope/index.html`, find the `.dash-main` area (the main content area after the sidebar).
+
+**Remove the 2-column split** inside dash-main. Currently it looks like:
+```
+[Input Card | Right Panel "Ready to analyze"]
+```
+
+Change it to single column full width:
+```
+[Input Card — full width]
+[Results — full width below]
+```
+
+Specifically:
+1. Find the wrapper div that creates the 2-column layout inside `dash-main` (it uses `display:flex` or `display:grid` with two children — the input card and the right panel)
+2. Remove that wrapper — make both children stack vertically instead
+3. The input card (with textarea, tabs, context buttons, analyze button) should take **full width** of the available area
+4. The right panel content ("Ready to analyze" empty state + results output) should move **directly below** the input card
+5. Remove any `max-width` limits on the input card — let it fill the full dash-main width
+6. Add `max-width: 860px; margin: 0 auto;` to the entire content column so it stays centered and readable on wide screens
+
+### Also update the textarea:
+- Make `min-height: 160px` so it feels more spacious
+- Make it feel like a proper input area, not cramped
+
+---
+
+## CHANGE 2: Sidebar — All Sections Collapsed by Default
+
+Right now all sidebar sections open automatically. I want them ALL collapsed by default.
+
+### Step 1 — Update `toggleSbSection` function:
+```javascript
+function toggleSbSection(id, iconId) {
+  const el = document.getElementById(id);
+  const icon = document.getElementById(iconId);
+  if (!el) return;
+  const isHidden = el.style.display === 'none' || el.style.display === '';
+  el.style.display = isHidden ? 'block' : 'none';
+  if (icon) icon.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
+}
+```
+
+### Step 2 — Set all sidebar content divs to hidden on load:
+- `<div id="sbHowTo"` → add `style="display:none;"`
+- `<div id="sbAgents"` → add `style="display:none;"`
+- `<div id="sbHistory"` → add `style="display:none;"`
+
+### Step 3 — Update `.sb-section` and `.sb-hdr` CSS:
+```css
+.sb-section {
+  border-bottom: 1px solid var(--border);
+}
+.sb-hdr {
+  display:flex;align-items:center;justify-content:space-between;
+  width:100%;background:transparent;border:none;cursor:pointer;font-family:inherit;
+  padding:.6rem .875rem;font-size:.8rem;font-weight:700;color:var(--text);
+  transition:background .15s;text-align:left;letter-spacing:.01em;
+}
+.sb-hdr:hover { background:rgba(128,128,128,.07); }
+```
+
+---
+
+## CHANGE 3: Landing Page Hero — Update Button Text
+
+In `artifacts/thoughtscope/index.html`, find the hero section on the landing page.
+
+Find the button or text that says **"Launching Soon"** (or any variant) and replace with:
+```
+Try Menticx Free
+```
+
+Keep exact same button styling — only change the text.
+
+---
+
+## CHANGE 4: Remove Welcome Strip + Clean Up Dashboard Header
+
+The "Welcome back 👋 / Hello, Jibran Khan!" strip at the top of dash-main takes up space. Make it cleaner:
+
+Replace the current welcome strip with a minimal single line:
+```html
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;">
+  <h2 id="dashWelcomeName" style="font-size:1rem;font-weight:700;color:var(--text);">Hello 👋</h2>
+  <span id="dashPlanBadge2" style="padding:.2rem .65rem;border-radius:9999px;font-size:.7rem;font-weight:700;background:rgba(16,163,127,.12);border:1px solid rgba(16,163,127,.2);color:#6ee7b7;">Free Plan</span>
+</div>
+```
+
+---
+
+## CHANGE 5: Context Tabs — Update for Small Business
+
+In the "Analyze AI" tab, there are context buttons: Student, Professional, Researcher, Curious, Technical.
+
+Replace these with Small Business focused context options:
+```html
+<button class="ctx-tab active" data-ctx="Shop Owner" onclick="setCtx(this)">🏪 Shop Owner</button>
+<button class="ctx-tab" data-ctx="Service Business" onclick="setCtx(this)">🔧 Service Business</button>
+<button class="ctx-tab" data-ctx="Online Seller" onclick="setCtx(this)">📦 Online Seller</button>
+<button class="ctx-tab" data-ctx="Freelancer" onclick="setCtx(this)">💻 Freelancer</button>
+<button class="ctx-tab" data-ctx="Startup" onclick="setCtx(this)">🚀 Startup</button>
+```
+
+---
+
+Please make all 5 changes and confirm what was updated in each file.
