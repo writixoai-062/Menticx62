@@ -26,13 +26,7 @@ app.use(
   }),
 );
 app.use(cors({
-  origin: [
-    'https://menticx62-thoughtscope-qjiu.vercel.app',
-    'http://localhost:3000',
-    'http://localhost:5173',
-    /\.replit\.dev$/,
-    /\.repl\.co$/,
-  ],
+origin: '*',
   methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 }));
