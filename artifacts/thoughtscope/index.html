@@ -1152,10 +1152,15 @@
 // ── CONFIGURATION ──────────────────────────────────────────
 const SUPABASE_URL      = 'https://eenljddhgzophmfrwmcf.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVlbmxqZGRoZ3pvcGhtZnJ3bWNmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU0MDEzMDksImV4cCI6MjA5MDk3NzMwOX0.z6xQz3J8PgC5-KtWviH0TufvakcCBp992PUMUC8WWfg';
+// Detect environment: Vercel production vs Replit dev proxy
+const API_BASE = (window.location.hostname.includes('vercel.app'))
+  ? 'https://menticx62-api-server-khaki.vercel.app'
+  : '/api-server';
+
 // Secure server-side proxy — GEMINI_API_KEY never leaves the server
-const ANALYZE_API    = '/api-server/api/analyze';
-const FOLLOW_UP_API  = '/api-server/api/follow-up';
-const AGENT_API_BASE = '/api-server/api/agent';
+const ANALYZE_API    = API_BASE + '/api/analyze';
+const FOLLOW_UP_API  = API_BASE + '/api/follow-up';
+const AGENT_API_BASE = API_BASE + '/api/agent';
 
 // ── Supabase init ───────────────────────────────────────────
 const { createClient } = window.supabase;
@@ -1697,7 +1702,7 @@ async function generateQuestions() {
   btn.innerHTML = '<span class="spin"></span>Analyzing…';
 
   try {
-    const res = await fetch('/api-server/api/adaptive/questions', {
+    const res = await fetch(API_BASE + '/api/adaptive/questions', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ question: q, language: currentLangName })
@@ -1793,7 +1798,7 @@ async function getUniqueAnswer() {
     </div>`;
 
   try {
-    const res = await fetch('/api-server/api/adaptive/answer', {
+    const res = await fetch(API_BASE + '/api/adaptive/answer', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -1835,7 +1840,7 @@ async function getDeepAnalysis() {
     </div>`;
 
   try {
-    const res = await fetch('/api-server/api/adaptive/deep', {
+    const res = await fetch(API_BASE + '/api/adaptive/deep', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -2086,7 +2091,7 @@ async function getComparison() {
     </div>`;
 
   try {
-    const res = await fetch('/api-server/api/adaptive/compare', {
+    const res = await fetch(API_BASE + '/api/adaptive/compare', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -2697,7 +2702,7 @@ async function runAgent() {
   if (wrap) wrap.style.display = 'none';
 
   try {
-    const resp = await fetch('/api-server/api/agent', {
+    const resp = await fetch(API_BASE + '/api/agent', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ agentId: activeAgentId, inputs, language: currentLangName })
