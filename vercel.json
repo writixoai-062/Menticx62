@@ -1,6 +1,5 @@
 {
   "version": 2,
   "buildCommand": "echo 'no build needed'",
-  "installCommand": "cd api && npm install",
-  "outputDirectory": "."
+  "installCommand": "cd api && npm install"
 }
